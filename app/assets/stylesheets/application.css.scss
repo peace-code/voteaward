@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+section {
+  height: 300px;
+  &#about { background-color: #FFF;}
+  &#will  { background-color: #EEE;}
+  &#info  { background-color: #FFF;}
+  &#done  { background-color: #EEE;}
+  &#must  { background-color: #FFF;}
+  &#join  { background-color: #EEE;}
+}
