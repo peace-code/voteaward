@@ -14,10 +14,6 @@
 
 section {
   height: 300px;
-  &#about { background-color: #FFF;}
-  &#will  { background-color: #EEE;}
-  &#info  { background-color: #FFF;}
-  &#done  { background-color: #EEE;}
-  &#must  { background-color: #FFF;}
-  &#join  { background-color: #EEE;}
+  &:nth-child(3n) { background: #FEE; }
+  &:nth-child(3n+1) { background: #EFE; }
 }
