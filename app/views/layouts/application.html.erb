@@ -55,6 +55,14 @@
               <li><%= link_to "투표강제인증소", "#must"  %></li>
               <li><%= link_to "함께하겠소", "#join"  %></li>
             </ul>
+            <ul class='nav pull-right'>
+              <% if user_signed_in? %>
+                <li><%= link_to current_user.name, current_user %></li>
+                <li><%= link_to t('g.sign_out'), destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to t('g.sign_with_facebook'), user_omniauth_authorize_path(:facebook) %></li>
+              <% end %>
+            <ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>

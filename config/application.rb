@@ -64,5 +64,14 @@ module Voteaward
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Prevent scaffold.css, javascripts from being generated
+    config.generators do |g|
+      g.stylesheets false
+      g.javascripts false
+    end
+
+    # Facebook
+    config.facebook = YAML.load_file("#{Rails.root.to_s}/config/credentials/facebook_credential.yml")[Rails.env]
   end
 end

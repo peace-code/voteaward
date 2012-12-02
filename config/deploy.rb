@@ -24,7 +24,7 @@ namespace :deploy do
 
   desc "Symlink shared configs and folders on each release."
   task :create_symlink_shared do
-    # run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
+    run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
   end
   after 'deploy:create_symlink', 'deploy:create_symlink_shared'
 
