@@ -3,6 +3,10 @@ Voteaward::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users
+  resources :promises
+  resources :awards
 
-  root :to => 'pages#home'
+  match 'pages/home' => 'pages#home'
+
+  root :to => 'promises#index'
 end

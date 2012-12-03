@@ -1,0 +1,25 @@
+<section id='new_award'>
+  <style>
+    #new_award label.radio.inline { margin-right: 0.5em; }
+  </style>
+  <div class="container">
+    <div class="row">
+      <div class="span12">
+        <h1>'xxx 어워드' 만들기</h1>
+        <%= simple_form_for @award do |f| %>
+          <%= f.error_notification %>
+          <div class="form-inputs">
+            <div class="control-group string optional">
+              <label class="string optional control-label" for="award_content">내용</label>
+              <div class="controls"><input class="string optional" id="award_condition" name="award[condition]" size="50" type="text" placeholder='5000번째 투표약속을 하시는 분'>이 투표 약속과 인증을 완료하면 <input class="string optional" id="award_prize" name="award[prize]" size="50" type="text" placeholder='맛있는 커피 한잔'>을 드리겠습니다.</div>
+            </div>
+            <%= f.input :title, placeholder: '5000번째의 약속' %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

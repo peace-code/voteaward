@@ -47,13 +47,13 @@
           <a class="brand" href="#">투표대잔치</a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "투표대잔치?", "#about"  %></li>
-              <li><%= link_to "투표하겠소", "#will"  %></li>
-              <li><%= link_to "투표안하겠소", "#never"  %></li>
-              <li><%= link_to "모르겠소", "#info"  %></li>
-              <li><%= link_to "투표하셨소", "#voted"  %></li>
-              <li><%= link_to "투표강제인증소", "#must"  %></li>
-              <li><%= link_to "함께하겠소", "#join"  %></li>
+              <li><%= link_to "투표대잔치?", "/pages/home"  %></li>
+              <li><%= link_to "투표하겠소", promises_path  %></li>
+              <li><%= link_to "투표안하겠소", "#never", class: 'link-not-implemented'%></li>
+              <li><%= link_to "모르겠소", "#info", class: 'link-not-implemented'%></li>
+              <li><%= link_to "투표하셨소", "#voted", class: 'link-not-implemented'%></li>
+              <li><%= link_to "투표강제인증소", "#must", class: 'link-not-implemented'%></li>
+              <li><%= link_to "함께하겠소", "#join", class: 'link-not-implemented'%></li>
             </ul>
             <ul class='nav pull-right'>
               <% if user_signed_in? %>
