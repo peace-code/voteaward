@@ -5,6 +5,7 @@ Voteaward::Application.routes.draw do
   resources :users
   resources :promises
   resources :awards
+  resources :candidates
 
   match 'pages/home' => 'pages#home'
 

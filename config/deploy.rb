@@ -19,12 +19,15 @@ after "deploy:restart", "deploy:cleanup"
 namespace :deploy do
   task :clean_configs do
     run "rm -rf #{shared_path}/config"
-    run "mkdir -p #{shared_path}/config"
+    run "mkdir -p #{shared_path}/config/credentials"
   end
+
+  before "deploy:assets:precompile", "deploy:create_symlink"
 
   desc "Symlink shared configs and folders on each release."
   task :create_symlink_shared do
     run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
+    run "ln -nfs #{shared_path}/config/credentials/facebook_credential.yml #{release_path}/config/credentials/facebook_credential.yml"
   end
   after 'deploy:create_symlink', 'deploy:create_symlink_shared'
 

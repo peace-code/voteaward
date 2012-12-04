@@ -9,11 +9,12 @@
         <%= simple_form_for @award do |f| %>
           <%= f.error_notification %>
           <div class="form-inputs">
-            <div class="control-group string optional">
-              <label class="string optional control-label" for="award_content">내용</label>
-              <div class="controls"><input class="string optional" id="award_condition" name="award[condition]" size="50" type="text" placeholder='5000번째 투표약속을 하시는 분'>이 투표 약속과 인증을 완료하면 <input class="string optional" id="award_prize" name="award[prize]" size="50" type="text" placeholder='맛있는 커피 한잔'>을 드리겠습니다.</div>
+            <div class="control-group text required">
+              <label class="text required control-label" for="award_content"><abbr title="required">*</abbr> 내용</label>
+              <div class="controls"><%= f.text_area :content, rows: 5, class: 'span4' %></textarea><span class="help-block">수여하고픈 어워드의 내용을 적어주세요.<br>예를 들어 '5000명이 투표 약속을 하면 그 중에서 5명에게 커피를 쏘겠습니다', '1500번째 투료 약속자에게 맛있는 저녁을 사겠습니다' 등등 창의적으로 적으시면 됩니다.</span></div>
             </div>
-            <%= f.input :title, placeholder: '5000번째의 약속' %>
+            <%= f.input :title, placeholder: '5000번째의 약속', label: '어워드 이름' %>
+            <%= f.input :prize, label: '상품' %>
           </div>
           <div class="form-actions">
             <%= f.button :submit %>

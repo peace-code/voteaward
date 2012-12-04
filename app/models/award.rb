@@ -7,11 +7,11 @@ class Award
 
   #fields
   field :title
-  field :condition
+  field :content
   field :prize
 
   # validations
-  validates_presence_of :title, :condition, :prize
+  validates_presence_of :title, :content, :prize
 
   # scopes
   default_scope desc(:_id)
