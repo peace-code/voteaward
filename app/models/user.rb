@@ -4,6 +4,7 @@ class User
 
   # association
   has_one :promise
+  has_one :giveup
   has_many :awards
 
   # Include default devise modules. Others available are:
