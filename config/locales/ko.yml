@@ -1,3 +1,6 @@
 ko:
   g:
+    title: '2012 투표대잔치'
     sign_out: '로그아웃'
+  promise:
+    share: "%{username}님이 %{seq}번째로 투표 약속을 하셨습니다. 투표 약속을 한 이유는 '%{reason}'랍니다. :)"

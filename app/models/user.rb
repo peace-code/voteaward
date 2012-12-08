@@ -6,6 +6,7 @@ class User
   has_one :promise
   has_one :giveup
   has_many :awards
+  has_many :events
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -58,5 +59,13 @@ class User
   # methods
   def profile_image
     "http://graph.facebook.com/#{omniauth_uid}/picture?type=large" if omniauth_provider == :facebook
+  end
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(omniauth_credentials['token'])
+    block_given? ? yield(@facebook) : @facebook
+  rescue Koala::Facebook::APIError => e
+    logger.info e.to_s
+    nil # or consider a custom null object
   end
 end

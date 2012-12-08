@@ -1,0 +1,12 @@
+<div style='border: 1px solid #DDDDDD; margin-bottom: 1em; padding: 1em; background: #F5F5F5;'>
+  <div class='media'>
+    <a href='<%= promise_path(promise) %>' class='pull-left'>
+      <%= image_tag promise.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+    </a>
+    <div class='media-body'>
+      <h4 class='media-heading'><%= promise.seq %> / <%= promise.user.name %></h4>
+      <p style='color:#888; font-weight: bold;'><%= promise.candidate.name %>을 지지하는 <%= promise.area %>의 <%= promise.age %></p>
+      <p><%= promise.reason %> <%= content_tag :span, promise.created_at, style: 'color: #999; font-size: 0.9em;' %></p>
+    </div>
+  </div>
+</div>

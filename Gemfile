@@ -7,9 +7,17 @@ gem 'rails', '3.2.9'
 
 gem 'mongoid'
 
+# file upload
+gem 'carrierwave'
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'rmagick'
+
 # auth
 gem 'devise'
 gem 'omniauth-facebook'
+
+# sns
+gem 'koala'
 
 # Gems used only for assets and not required
 # in production environments by default.
