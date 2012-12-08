@@ -1,9 +1,11 @@
 <div class='span6'>
   <div style='border: 1px solid #DDDDDD; margin-bottom: 1em; padding: 1em; background: #F5F5F5;'>
     <div class='media'>
-      <a class='pull-left'>
-        <%= image_tag giveup.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
-      </a>
+      <div class='pull-left' style='text-align: center;'>
+        <%= image_tag giveup.user.profile_image, class: 'media-object', style: 'width: 80px; margin-bottom:0.5em;' %>
+        <%= link_to '철회', giveup, method: :delete, class: 'btn btn-danger',  confirm: '철회하시겠습니까?' if user_signed_in? && current_user == giveup.user %>
+      </div>
+
       <div class='media-body'>
         <h4 class='media-heading'><%= giveup.user.name %>님의 이유
           <small><%= giveup.area %>의 <%= giveup.age %></small>

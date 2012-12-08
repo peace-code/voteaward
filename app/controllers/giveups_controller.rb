@@ -14,5 +14,11 @@ class GiveupsController < ApplicationController
   end
 
   def destroy
+    @giveup = Giveup.find(params[:id])
+    if @giveup.user == current_user && @giveup.destroy
+      redirect_to giveups_url, notice: I18n.t('giveup.destryed')
+    else
+      redirect_to giveups_url
+    end
   end
 end
