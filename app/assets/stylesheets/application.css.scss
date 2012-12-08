@@ -17,3 +17,7 @@ section {
   &:nth-child(3n) { background: #FEE; }
   &:nth-child(3n+1) { background: #EFE; }
 }
+
+div.infobox {
+  border: 1px solid #DDDDDD; margin-bottom: 1em; padding: 1em; background: #F5F5F5;
+}
