@@ -47,11 +47,11 @@
           <%= link_to '투표대잔치', root_path, class: 'brand' %>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소 (#{Sequence.first.last_id}명)", promises_path %></li>
+              <li class='<%= 'active' if params['action'] == 'home' %>'><%= link_to "투표대잔치는 무엇?", home_path  %></li>
+              <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소 (#{Sequence.where(object:'promise').first.last_id}명)", promises_path %></li>
               <li class='<%= 'active' if params['controller'] == 'giveups' %>'><%= link_to "투표할맘없소 (#{Giveup.all.count}명)", giveups_path %></li>
               <li class='<%= 'active' if params['action'] == 'info' %>'><%= link_to "모르겠소", info_path %></li>
               <li class='<%= 'active' if params['action'] == 'discuss' %>'><%= link_to "함께하겠소", discuss_path %></li>
-              <li class='<%= 'active' if params['action'] == 'home' %>'><%= link_to "투표대잔치는 무엇?", home_path  %></li>
               <!--
               <li><%= link_to "투표하셨소", "#voted", class: 'link-not-implemented'%></li>
               <li><%= link_to "투표강제인증소", "#must", class: 'link-not-implemented'%></li>
