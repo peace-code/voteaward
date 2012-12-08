@@ -24,4 +24,18 @@ class PromisesController < ApplicationController
   def show
     @promise = Promise.find(params[:id])
   end
+
+  def edit
+    @promise = Promise.find(params[:id])
+  end
+
+  def update
+    @promise = Promise.find(params[:id])
+    redirect_to promises_url if @promise.user != current_user
+    if @promise.update_attributes(params[:promise])
+      redirect_to promises_url, notice: I18n.t('promise.updated')
+    else
+      redirect_to promises_url
+    end
+  end
 end
