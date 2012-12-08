@@ -9,7 +9,9 @@ Voteaward::Application.routes.draw do
   resources :awards
   resources :giveups
 
-  match 'pages/home' => 'pages#home'
+  match 'home' => 'pages#home', as: 'home'
+  match 'info' => 'pages#info', as: 'info'
+  match 'discuss' => 'pages#discuss', as: 'discuss'
 
   root :to => 'promises#index'
 end
