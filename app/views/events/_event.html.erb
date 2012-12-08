@@ -1,7 +1,7 @@
 <div class='span4'>
   <div class='infobox'>
-    <%= image_tag event.image, style: "width:100%" %>
-    <h4><%= event.title %></h4>
+    <%= link_to image_tag(event.image, style: "width:100%"), event.url %>
+    <h4><%= link_to event.title, event.url %></h4>
     <p><%= simple_format event.description %></p>
     <p class='muted'><%= event.user.name %></p>
     <%= link_to '수정', edit_event_path(event) if user_signed_in? && current_user == event.user %>

@@ -22,10 +22,16 @@ namespace :deploy do
     run "mkdir -p #{shared_path}/config/credentials"
   end
 
+  task :clean_uploads do
+    run "rm -rf #{shared_path}/uploads"
+    run "mkdir -p #{shared_path}/uploads"
+  end
+
   before "deploy:assets:precompile", "deploy:create_symlink"
 
   desc "Symlink shared configs and folders on each release."
   task :create_symlink_shared do
+    run "ln -nfs #{shared_path}/uploads #{release_path}/public/uploads"
     run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
     run "ln -nfs #{shared_path}/config/credentials/facebook_credential.yml #{release_path}/config/credentials/facebook_credential.yml"
   end
