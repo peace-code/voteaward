@@ -15,6 +15,7 @@ class Promise
 
   # validation
   validates_presence_of :reason, :area, :sex, :age
+  validates_uniqueness_of :user_id
 
   # scope
   default_scope desc(:_id)

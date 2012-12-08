@@ -1,6 +1,16 @@
-<div>
-  <h3><%= giveup.user.name %>님의 이유
-    <small><%= giveup.area %>의 <%= giveup.age %></small>
-  </h3>
-  <p><%= giveup.reason %> <%= content_tag :span, giveup.created_at %></p>
+<div class='span6'>
+  <div style='border: 1px solid #DDDDDD; margin-bottom: 1em; padding: 1em; background: #F5F5F5;'>
+    <div class='media'>
+      <a class='pull-left'>
+        <%= image_tag giveup.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+      </a>
+      <div class='media-body'>
+        <h4 class='media-heading'><%= giveup.user.name %>님의 이유
+          <small><%= giveup.area %>의 <%= giveup.age %></small>
+        </h4>
+        <p><%= giveup.reason %> <%= content_tag :span, giveup.created_at, style: 'color: #999; font-size: 0.9em;' %></p>
+      </div>
+    </div>
+  </div>
 </div>
+

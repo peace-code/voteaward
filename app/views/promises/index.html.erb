@@ -12,14 +12,16 @@
           <%= link_to '투표약속하기', new_promise_path, class: 'btn btn-primary' %>
         </div>
       <% else %>
-        <div class='well'>
-          <%= current_user.promise.seq %>번째로 투표 약속을 하셨습니다.
-          <%= current_user.awards.count %>개의 어워드를 만드셨습니다.
+        <div class='alert alert-success'>
+          <%= content_tag :b, current_user.name %>님은
+          <%= content_tag :b, current_user.promise.seq %>번째로 투표 약속을 하셨고,
+          <%= content_tag :b, current_user.awards.count %>개의 어워드를 만드셨습니다.
         </div>
       <% end %>
       <div class='well'>
-        <p>누구든지 투표를 약속한 사람들에게 어워드를 부여할 수 있습니다. 우리가 우리에게 상을 주는 겁니다. 지금 어워드를 만들어 보세요!</p>
-        <%= link_to '어워드 만들기', new_award_path, class: 'btn btn-primary' %>
+        <p>누구든지 투표를 약속한 사람들에게 어워드를 부여할 수 있습니다.
+          지금 바로 <%= content_tag :b, current_user.name %>님만의 어워드를 만들어 보세요!</p>
+        <%= link_to "2012 투표대잔치 '#{current_user.name} 어워드' 만들기", new_award_path, class: 'btn btn-primary btn-large' %>
       </div>
     <% else %>
       <div class='well'>
@@ -30,28 +32,40 @@
 
     <div class='row'>
       <div class='span6'>
-        <h2>투표 약속</h2>
-        <ul>
-          <% @promises.each do |promise| %>
-            <li>
-              <h4><%= promise.seq %> : <%= promise.user.name %> <small><%= promise.candidate.name %>을 지지하는 <%= promise.area %>의 <%= promise.age %></small></h4>
-              <p><%= promise.reason %> <%= content_tag :span, promise.created_at %></p>
-            </li>
-          <% end %>
-        </ul>
+        <h3>투표 약속</h3>
+        <% @promises.each do |promise| %>
+          <div style='border: 1px solid #DDDDDD; margin-bottom: 1em; padding: 1em; background: #F5F5F5;'>
+            <div class='media'>
+              <a class='pull-left'>
+                <%= image_tag promise.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+              </a>
+              <div class='media-body'>
+                <h4 class='media-heading'><%= promise.seq %> / <%= promise.user.name %></h4>
+                <p style='color:#888; font-weight: bold;'><%= promise.candidate.name %>을 지지하는 <%= promise.area %>의 <%= promise.age %></p>
+                <p><%= promise.reason %> <%= content_tag :span, promise.created_at, style: 'color: #999; font-size: 0.9em;' %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
+
       <div class='span6'>
-        <h2>어워드</h2>
-        <ul>
-          <% @awards.each do |award| %>
-            <li>
-              <h4><%= award.title %>
-                <small><%= award.user.name %>님의 어워드</small></h4>
-              <p><%= award.content %></p>
-              <p>상품 : <%= award.prize %></p>
-            </li>
-          <% end %>
-        </ul>
+        <h3>어워드</h3>
+        <% @awards.each do |award| %>
+          <div style='border: 1px solid #DDDDDD; margin-bottom: 1em; padding: 1em; background: #F5F5F5;'>
+            <div class='media'>
+              <a class='pull-left'>
+                <%= image_tag award.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+              </a>
+              <div class='media-body'>
+                <h4 class='media-heading'><%= award.title %>
+                  <small><%= award.user.name %>님의 어워드</small></h4>
+                <p><%= award.content %></p>
+                <p>상품 : <%= award.prize %></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
   </div>
 </section>

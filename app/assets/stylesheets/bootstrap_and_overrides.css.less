@@ -1,9 +1,7 @@
 @import "twitter/bootstrap/bootstrap";
-@import "twitter/bootstrap/responsive";
+@import "./responsive";
 
-body {
-    padding-top: 40px;
-}
+body { padding-top: 50px; }
 
 // Set the correct sprite paths
 @iconSpritePath: asset-path("twitter/bootstrap/glyphicons-halflings");
@@ -13,6 +11,7 @@ body {
 // Note: If you use asset_path() here, your compiled bootstrap_and_overrides.css will not
 //       have the proper paths. So for now we use the absolute path.
 @fontAwesomeEotPath: asset-path("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-path("fontawesome-webfont.eot#iefix");
 @fontAwesomeWoffPath: asset-path("fontawesome-webfont.woff");
 @fontAwesomeTtfPath: asset-path("fontawesome-webfont.ttf");
 @fontAwesomeSvgPath: asset-path("fontawesome-webfont.svg");

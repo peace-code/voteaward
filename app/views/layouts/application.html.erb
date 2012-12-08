@@ -47,10 +47,10 @@
           <%= link_to '투표대잔치', root_path, class: 'brand' %>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li class='<%= 'active' if params['action'] == 'home' %>'><%= link_to "투표대잔치는 무엇?", home_path  %></li>
               <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소 (#{Sequence.get_last_id('promise')}명)", promises_path %></li>
               <li class='<%= 'active' if params['controller'] == 'giveups' %>'><%= link_to "투표할맘없소 (#{Giveup.all.count}명)", giveups_path %></li>
               <li class='<%= 'active' if params['action'] == 'info' %>'><%= link_to "모르겠소", info_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'events' %>'><%= link_to "다른 이벤트들", events_path %></li>
               <li class='<%= 'active' if params['action'] == 'discuss' %>'><%= link_to "함께하겠소", discuss_path %></li>
               <!--
               <li><%= link_to "투표하셨소", "#voted", class: 'link-not-implemented'%></li>
@@ -59,9 +59,18 @@
               -->
             </ul>
             <ul class='nav pull-right'>
+              <li class='<%= 'active' if params['action'] == 'home' %>'><%= link_to "투표대잔치?", home_path  %></li>
               <% if user_signed_in? %>
-                <li><%= link_to current_user.name, current_user %></li>
-                <li><%= link_to t('g.sign_out'), destroy_user_session_path, method: :delete %></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <%= current_user.name %>
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to '내 정보', current_user %></li>
+                    <li><%= link_to t('g.sign_out'), destroy_user_session_path, method: :delete %></li>
+                  </ul>
+                </li>
               <% else %>
                 <li><%= link_to t('g.sign_with_facebook'), user_omniauth_authorize_path(:facebook) %></li>
               <% end %>

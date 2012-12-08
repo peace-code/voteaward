@@ -54,4 +54,9 @@ class User
   field :omniauth_uid
   field :omniauth_credentials
   field :omniauth_url
+
+  # methods
+  def profile_image
+    "http://graph.facebook.com/#{omniauth_uid}/picture?type=large" if omniauth_provider == :facebook
+  end
 end

@@ -2,22 +2,22 @@
   <div class='container'>
     <div class='page-header'>
       <h1>투표할맘없소
-        <small>총 <%= Giveup.all.count %>분이 투표하지 않겠다고 밝히셨습니다.</small>
+        <small>총 <%= Giveup.all.count %>명이 투표하지 않겠다고 밝히셨습니다.</small>
       </h1>
     </div>
+    <div class='alert alert-success'>
+      <h4 style='margin-bottom:0.5em;'>왜 투표를 하지 않으려는지 그 이유를 나누어 주시겠어요?</h4>
+      <p>투표하지 않음도 우리가 지금까지 놓쳐왔던 중요한 정치 표현이 아닐까요? 투표대잔치는 여러분의 뜻을 모아드리겠습니다.</p>
+    </div>
     <div class='well'>
-      <p>투표 거부도 중요한 의사표현의 하나입니다.
-        <br>투표대잔치는 여러분의 뜻을 존중하고 그 뜻을 모아드리고자 합니다.
-        <br>왜 투표를 하지 않으려는지 그 이유를 나누어 주시겠어요?
-      </p>
-      <hr>
+      <button type="button" class="close" data-dismiss="alert">×</button>
       <% if user_signed_in? %>
         <%= render 'form' %>
       <% else %>
         <%= link_to '페이스북으로 시작하기', user_omniauth_authorize_path(:facebook), class: 'btn btn-primary' %>
       <% end %>
     </div>
-    <div>
+    <div class='row'>
       <%= render @giveups %>
     </div>
   </div>

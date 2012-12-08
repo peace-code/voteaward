@@ -8,8 +8,6 @@
     <%= f.input :area, label: '지역' %>
     <%= f.input :sex, label: '성별', as: :radio_buttons, collection: %w[남 여], item_wrapper_class: 'inline' %>
     <%= f.input :age, label: '연령대', as: :radio_buttons, collection: %w[20대 30대 40대 50대 60대 70대 80대 90대], item_wrapper_class: 'inline' %>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit %>
+    <div class='controls'><%= f.button :submit, '입력 완료', class: 'btn-primary' %></div>
   </div>
 <% end %>
