@@ -10,6 +10,7 @@ class Event
   field :url
   field :title
   field :description
+  mount_uploader :image, ImageUploader
 
   # validation
   validates_presence_of :url, :title, :description
