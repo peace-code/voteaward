@@ -1,4 +1,8 @@
 class AwardsController < ApplicationController
+  def index
+    redirect_to promises_path
+  end
+
   def new
     @award = current_user.awards.build
   end
