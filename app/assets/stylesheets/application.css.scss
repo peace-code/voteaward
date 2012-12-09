@@ -12,8 +12,16 @@
  *= require_tree .
  */
 
+.footer {
+  margin-top: 2em;
+  padding: 2em;
+  background: #C7B68E;
+  a {
+    color: #333;
+  }
+}
+
 section {
-  height: 300px;
   &:nth-child(3n) { background: #FEE; }
   &:nth-child(3n+1) { background: #EFE; }
 }
