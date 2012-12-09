@@ -18,3 +18,6 @@
 # Ignore configs
 mongoid.yml
 /config/credentials/*.yml
+
+# Ignore DS_Store
+.DS_Store
