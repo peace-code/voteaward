@@ -14,5 +14,5 @@ Voteaward::Application.routes.draw do
   match 'info' => 'pages#info', as: 'info'
   match 'discuss' => 'pages#discuss', as: 'discuss'
 
-  root :to => 'promises#index'
+  root :to => 'pages#home'
 end
