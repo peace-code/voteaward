@@ -7,6 +7,7 @@ class Promise
   belongs_to :candidate
 
   # fields
+  field :show_candidate, type: Boolean, default: true
   field :seq, type: Integer
   field :reason
   field :area

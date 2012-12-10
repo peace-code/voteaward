@@ -4,9 +4,9 @@
       <%= image_tag promise.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
     </a>
     <div class='media-body'>
-      <h4 class='media-heading'><%= promise.seq %> / <%= promise.user.name %></h4>
-      <p class='muted'><%= raw "<b>#{promise.candidate.name}</b>을(를) 지지하는" unless promise.candidate.blank? %> <%= content_tag :b, promise.area %>의 <%= content_tag :b, promise.age %></p>
-      <p><%= promise.reason %> <%= content_tag :span, promise.created_at, class: 'muted', style: 'font-size: 0.9em;' %></p>
+      <h4 class='media-heading'><%= promise.seq %> - <%= link_to promise.user.name, promise.user.omniauth_url %></h4>
+      <p class='muted'><%= raw "<b>#{promise.candidate.name}</b>을(를) 지지하는" if ( ! promise.candidate.blank? && promise.show_candidate == true ) %> <%= content_tag :b, promise.area %>의 <%= content_tag :b, promise.age %></p>
+      <p><%= promise.reason %></p>
       <%= link_to '수정', edit_promise_path(promise) if user_signed_in? && promise.user == current_user %>
     </div>
   </div>

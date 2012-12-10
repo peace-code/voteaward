@@ -40,13 +40,13 @@
         <h3>어워드</h3>
         <% @awards.each do |award| %>
           <div style='border: 1px solid #DDDDDD; margin-bottom: 1em; padding: 1em; background: #F5F5F5;'>
+            <h4><i class='icon icon-star' style='color:#C5BA87'></i> <%= award.title %>
+              <small><%= award.user.name %>님의 어워드</small></h4>
             <div class='media'>
               <a class='pull-left'>
                 <%= image_tag award.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
               </a>
               <div class='media-body'>
-                <h4 class='media-heading'><%= award.title %>
-                  <small><%= award.user.name %>님의 어워드</small></h4>
                 <p><%= award.content %></p>
                 <p>상품 : <%= award.prize %></p>
               </div>
