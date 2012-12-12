@@ -1,6 +1,6 @@
-<div class='span4'>
+<div class='span4 masonry_item'>
   <div class='infobox'>
-    <%= link_to image_tag(event.image_url(:large), style: "width:100%"), event.url %>
+    <%= link_to image_tag(event.image, style: "width:100%"), event.url %>
     <h4><%= link_to event.title, event.url %></h4>
     <p><%= simple_format event.description %></p>
     <p class='muted'><%= event.user.name %></p>
