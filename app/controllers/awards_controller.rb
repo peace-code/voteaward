@@ -1,6 +1,6 @@
 class AwardsController < ApplicationController
   def index
-    redirect_to promises_path
+    @awards = Award.all
   end
 
   def new

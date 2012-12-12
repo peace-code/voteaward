@@ -1,10 +1,3 @@
-<section id='promises'>
-  <div class='container'>
-    <div class='page-header'>
-      <h1>투표하겠소
-        <small>총 <%= Promise.all.count %>명이 투표 약속을 하셨습니다.</small>
-      </h1>
-    </div>
     <% if user_signed_in? %>
       <% if current_user.promise.blank? %>
         <div class='well'>
@@ -29,22 +22,3 @@
         <%= link_to '페이스북으로 시작하기', user_omniauth_authorize_path(:facebook), class: 'btn btn-primary' %>
       </div>
     <% end %>
-
-    <div class='tabbable'>
-      <ul class="nav nav-tabs">
-        <li class="active">
-          <a href="#tab1"><%= Promise.all.count %>명의 투표 약속</a>
-        </li>
-        <li class='disabled'><a href="#tab2"><i class='icon-wrench'></i>당첨되었어요! (작업중)</a></li>
-      </ul>
-      <div class='tab-content'>
-        <div class='row tab-pane active' id='tab1'>
-          <%= render @promises %>
-        </div>
-        <div class='row tab-pane active' id='tab2'>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</section>

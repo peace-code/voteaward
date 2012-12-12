@@ -1,0 +1,16 @@
+<div class='span6'>
+  <div class='infobox'>
+    <h4><i class='icon icon-gift'></i> <%= award.title %> 어워드
+      <small><%= link_to award.user.name, award.user %></small></h4>
+    <div class='media'>
+      <a class='pull-left'>
+        <%= image_tag award.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+      </a>
+      <div class='media-body'>
+        <p><%= award.content %></p>
+        <p>상품 : <%= award.prize %></p>
+        <%= link_to('destroy', award, method: :delete, confirm: 'are you sure?') if (user_signed_in? && current_user.admin?) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,6 @@
 class PromisesController < ApplicationController
   def index
     @promises = Promise.all
-    @awards = Award.all
   end
 
   def new

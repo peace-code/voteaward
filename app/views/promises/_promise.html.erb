@@ -1,13 +1,15 @@
-<div style='border: 1px solid #DDDDDD; margin-bottom: 1em; padding: 1em; background: #F5F5F5;'>
-  <div class='media'>
-    <a class='pull-left'>
-      <%= image_tag promise.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
-    </a>
-    <div class='media-body'>
-      <h4 class='media-heading'><%= promise.seq %> - <%= link_to promise.user.name, promise.user.omniauth_url %></h4>
-      <p class='muted'><%= raw "<b>#{promise.candidate.name}</b>을(를) 지지하는" if ( ! promise.candidate.blank? && promise.show_candidate == true ) %> <%= content_tag :b, promise.area %>의 <%= content_tag :b, promise.age %></p>
-      <p><%= promise.reason %></p>
-      <%= link_to '수정', edit_promise_path(promise) if user_signed_in? && promise.user == current_user %>
+<div class='span4'>
+  <div class='infobox'>
+    <div class='media'>
+      <h4><span style='font-size:2.0em;font-style:italic;'><%= promise.seq.ordinalize %></span> <%= link_to promise.user.name, promise.user.omniauth_url %></h4>
+      <a class='pull-left'>
+        <%= image_tag promise.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+      </a>
+      <div class='media-body'>
+        <p class='muted' style='font-size:0.85em'><%= raw "<b>#{promise.candidate.name}</b>을(를) 지지하는" if ( ! promise.candidate.blank? && promise.show_candidate == true ) %> <%= content_tag :b, promise.area %>의 <%= content_tag :b, promise.age %></p>
+        <p><%= promise.reason %></p>
+        <%= link_to '수정', edit_promise_path(promise) if user_signed_in? && promise.user == current_user %>
+      </div>
     </div>
   </div>
 </div>

@@ -1,0 +1,15 @@
+<section id='promises'>
+  <div class='container'>
+    <div class='page-header'>
+      <h1>투표 어워드
+        <small>총 <%= Award.all.count%>개의 어워드</small>
+      </h1>
+    </div>
+
+    <%= render 'encourage_box' %>
+
+    <div class='row'>
+      <%= render @awards %>
+    </div>
+  </div>
+</section>
