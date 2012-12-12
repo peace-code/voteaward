@@ -20,4 +20,14 @@ $(document).ready(function() {
     event.preventDefault();
     alert('준비중입니다');
   });
+
+  var $container = $('.masonry_container');
+  $container.imagesLoaded(function(){
+    $container.masonry({
+      itemSelector : '.masonry_item',
+      columnWidth : 240
+    });
+  });
+
 });
+

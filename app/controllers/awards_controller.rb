@@ -14,7 +14,7 @@ class AwardsController < ApplicationController
         I18n.t('award.share', username: current_user.name, title: @award.title, content: @award.content, prize: @award.prize),
         { name: I18n.t('g.title'), link: awards_url }
       )
-      redirect_to promises_path, notice: I18n.t('award.created')
+      redirect_to awards_url, notice: I18n.t('award.created')
     else
       render action: 'new'
     end
@@ -23,7 +23,7 @@ class AwardsController < ApplicationController
   def destroy
     @award = Award.find(params[:id])
     if current_user.admin? && @award.destroy
-      redirect_to promises_path
+      redirect_to awards_url
     end
   end
 end
