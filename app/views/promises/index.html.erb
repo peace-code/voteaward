@@ -49,6 +49,7 @@
               <div class='media-body'>
                 <p><%= award.content %></p>
                 <p>상품 : <%= award.prize %></p>
+                <%= link_to('destroy', award, method: :delete, confirm: 'are you sure?') if (user_signed_in? && current_user.admin?) %>
               </div>
             </div>
           </div>

@@ -19,4 +19,11 @@ class AwardsController < ApplicationController
       render action: 'new'
     end
   end
+
+  def destroy
+    @award = Award.find(params[:id])
+    if current_user.admin? && @award.destroy
+      redirect_to promises_path
+    end
+  end
 end

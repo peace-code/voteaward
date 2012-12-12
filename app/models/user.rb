@@ -57,6 +57,10 @@ class User
   field :omniauth_url
 
   # methods
+  def admin?
+    %w[rest515@gmail.com dangun76@gmail.com].include?(email)
+  end
+
   def profile_image
     "http://graph.facebook.com/#{omniauth_uid}/picture?type=large" if omniauth_provider == :facebook
   end
