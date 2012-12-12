@@ -72,7 +72,8 @@ module Voteaward
       g.javascripts false
     end
 
-    # Facebook
+    # oauth
     config.facebook = YAML.load_file("#{Rails.root.to_s}/config/credentials/facebook_credential.yml")[Rails.env]
+    config.twitter = YAML.load_file("#{Rails.root.to_s}/config/credentials/twitter_credential.yml")[Rails.env]
   end
 end

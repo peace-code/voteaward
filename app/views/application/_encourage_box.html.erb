@@ -18,7 +18,8 @@
       </div>
     <% else %>
       <div class='well'>
-        <p>투표 대잔치 <%= Promise.all.count + 1 %>번째의 주인공이 되어 주세요!</p>
-        <%= link_to '페이스북으로 시작하기', user_omniauth_authorize_path(:facebook), class: 'btn btn-primary' %>
+        <h4>투표 대잔치 <%= Promise.all.count + 1 %>번째의 주인공이 되어 주세요!</h4>
+        <%= link_to raw("<i class='icon-facebook'></i> 페이스북으로 시작하기"), user_omniauth_authorize_path(:facebook), class: 'btn btn-primary btn-large' %>
+        <%= link_to raw("<i class='icon-twitter'></i> 트위터로 시작하기"), user_omniauth_authorize_path(:twitter), class: 'btn btn-primary btn-large' %>
       </div>
     <% end %>

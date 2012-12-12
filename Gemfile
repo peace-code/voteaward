@@ -15,9 +15,11 @@ gem 'rmagick'
 # auth
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 
 # sns
 gem 'koala'
+gem 'twitter'
 
 # Gems used only for assets and not required
 # in production environments by default.

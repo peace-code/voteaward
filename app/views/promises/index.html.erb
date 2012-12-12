@@ -5,30 +5,8 @@
         <small>총 <%= Promise.all.count %>명이 투표 약속을 하셨습니다.</small>
       </h1>
     </div>
-    <% if user_signed_in? %>
-      <% if current_user.promise.blank? %>
-        <div class='well'>
-          <p>간단히 투표 약속을 마칠 수 있습니다.</p>
-          <%= link_to '투표약속하기', new_promise_path, class: 'btn btn-primary' %>
-        </div>
-      <% else %>
-        <div class='alert alert-success'>
-          <%= content_tag :b, current_user.name %>님은
-          <%= content_tag :b, current_user.promise.seq %>번째로 투표 약속을 하셨고,
-          <%= content_tag :b, current_user.awards.count %>개의 어워드를 만드셨습니다.
-        </div>
-      <% end %>
-      <div class='well'>
-        <p>누구든지 투표를 약속한 사람들에게 어워드를 부여할 수 있습니다.
-          지금 바로 <%= content_tag :b, current_user.name %>님만의 어워드를 만들어 보세요!</p>
-        <%= link_to "2012 투표대잔치 '#{current_user.name} 어워드' 만들기", new_award_path, class: 'btn btn-primary btn-large' %>
-      </div>
-    <% else %>
-      <div class='well'>
-        <p>투표 대잔치 <%= Promise.all.count + 1 %>번째의 주인공이 되어 주세요!</p>
-        <%= link_to '페이스북으로 시작하기', user_omniauth_authorize_path(:facebook), class: 'btn btn-primary' %>
-      </div>
-    <% end %>
+
+    <%= render 'encourage_box' %>
 
     <div class='tabbable'>
       <ul class="nav nav-tabs">

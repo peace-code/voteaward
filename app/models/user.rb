@@ -11,16 +11,13 @@ class User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable,
+  devise :registerable,
+         :recoverable, :rememberable, :trackable,
          :omniauthable
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
-
-  validates_presence_of :email
-  validates_presence_of :encrypted_password
 
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -62,7 +59,18 @@ class User
   end
 
   def profile_image
-    "http://graph.facebook.com/#{omniauth_uid}/picture?type=large" if omniauth_provider == :facebook
+    if omniauth_provider == :facebook
+      "http://graph.facebook.com/#{omniauth_uid}/picture?type=large"
+    else
+      omniauth_image
+    end
+  end
+
+  def twitter
+    @twitter ||= Twitter::Client.new(
+      oauth_token: omniauth_credentials['token'],
+      oauth_token_secret: omniauth_credentials['secret']
+    )
   end
 
   def facebook
