@@ -1,7 +1,7 @@
 <div class='span4 masonry_item'>
   <div class='infobox'>
     <div class='media'>
-      <h4><span style='font-size:2.0em;font-style:italic;'><%= promise.seq %></span> <%= link_to promise.user.name, promise.user.omniauth_url %></h4>
+      <h4><span style='font-size:2.0em;font-style:italic;'><%= promise.seq %></span> <i class='icon-<%= promise.user.omniauth_provider %>'></i> <%= link_to "#{promise.user.name}", promise.user.omniauth_url %></h4>
       <a class='pull-left'>
         <%= image_tag promise.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
       </a>
