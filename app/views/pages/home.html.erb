@@ -12,34 +12,40 @@
     </div>
   </div>
   <div class='container'>
+    <div class='alert-danger alert'>
+      <h3>"투표 대잔치 배너"를 블로그나 사이트에 달아주세요!</h3>
+      <p>선거기간 동안은 투표 독려 배너가, 투표일에는 투표 인증을 요청하는 배너가 됩니다.
+      <%= link_to '배너 달기', banner_path, class: 'btn btn-danger' %>
+      </p>
+    </div>
     <div class='row'>
       <div class='span4'>
         <div class='well'>
-          <h4>투표 약속하고 상도 주고 받자!</h4>
-          <p>투표 약속을 하고, 약속한 사람들에게 내 이름으로 된 상을 부여한다면?</p>
-          <p>이렇게 우리가 주고 받는 상으로 투표율이 수직상승할 수도 있을까요?</p>
-          <p>아니면 투표 약속을 빌미로 새로운 인연을 만들수도 있을까요?</p>
+          <h4>투표 약속하고 어워드도 주자!</h4>
+          <p>투표 약속을 하고, 약속한 사람들에게 내가 만든 어워드를 부여한다면?</p>
+          <p>이렇게 우리가 주고 받는 어워드가 투표율을 수직 상승시킬까요?</p>
+          <p>아니면 투표 약속을 빌미로 새로운 인연을 만나게 될까요?</p>
           <p><%= link_to '투표하겠소?', promises_path, class: 'btn btn-large btn-block btn-danger' %></p>
           <p style='text-align:right;'>현재 : <%= content_tag :b, Promise.all.count %>명 약속 / <%= content_tag :b, Award.all.count %>개의 어워드</p>
         </div>
       </div>
       <div class='span4'>
         <div class='well'>
-          <h4>투표 할맘 없당께!</h4>
+          <h4>투표 할맘 없소!</h4>
           <p>바빠서 혹은 맘에 안 들어서, 아무 소용 없는 것 같아서 등등</p>
-          <p>그들은 왜 투표를 하지 않을까? 투표 대잔치가 투표를 포기하신 분들의 의견을 모아드립니다.</p>
-          <p>투표는 포기하더라도 이유는 들려주세요</p>
+          <p>사람들은 왜 투표를 하지 않을까? 투표 대잔치가 투표를 하지 않는 분들의 의견을 모아드립니다.</p>
+          <p>투표는 하지 않더라도 이유는 들려주세요</p>
           <p><%= link_to '투표할맘없소?', giveups_path, class: 'btn btn-large btn-block btn-warning' %></p>
-          <p style='text-align:right;'>현재 : <%= content_tag :b, Giveup.all.count %>명이 포기</p>
+          <p style='text-align:right;'>현재 : <%= content_tag :b, Giveup.all.count %>명이 안 할지도</p>
         </div>
       </div>
       <div class='span4'>
         <div class='well'>
-          <h4>투표 강제 인증소</h4>
+          <h4>나는 투표했소!</h4>
           <p>2012년 12월 19일</p>
-          <p>이 날만은 투표를 완료한 사람들만이 여러분의 블로그와 홈페이지, 서비스를 이용할 수 있게 됩니다.</p>
-          <p>곧 공개됩니다.</p>
-          <p><%= link_to '투표하시었소?', '', class: 'btn btn-large btn-block btn-info' %></p>
+          <p>여러분의 투표 인증을 평생 간직하세요.</p>
+          <p>곧 공개하겠습니다.</p>
+          <p><%= link_to '나는 투표했소!', '', class: 'btn btn-large btn-block btn-info' %></p>
         </div>
       </div>
     </div>
