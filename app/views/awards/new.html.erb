@@ -15,6 +15,8 @@
           <div class="controls"><%= f.text_area :content, rows: 5, class: 'span4' %></textarea><span class="help-block">수여하고픈 어워드의 내용을 적어주세요.<br>예를 들어 '5000명이 투표 약속을 하면 그 중에서 5명에게 커피를 쏘겠습니다', '1500번째 투료 약속자에게 맛있는 저녁을 사겠습니다' 등등 창의적으로 적으시면 됩니다.</span></div>
         </div>
         <%= f.input :prize, label: '상품' %>
+        <%= f.input :url, label: 'URL' %>
+        <%= f.input :address, label: '주소', hint: '상점인 경우 주소를 남겨주세요. 지도로 보여드릴께요.' %>
       </div>
       <div class="form-actions">
         <%= f.button :submit %>

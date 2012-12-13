@@ -22,6 +22,10 @@ class AwardsController < ApplicationController
     end
   end
 
+  def show
+    @award = Award.find(params[:id])
+  end
+
   def destroy
     @award = Award.find(params[:id])
     if current_user.admin? && @award.destroy

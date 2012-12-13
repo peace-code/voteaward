@@ -1,0 +1,46 @@
+<section id='promise'>
+  <div class='container'>
+    <div class='row'>
+      <div class='span8'>
+        <div class='page-header'>
+          <h1><i class='icon icon-gift'></i> <%= "#{@award.title}" %> <small>어워드</small></h1>
+        </div>
+        <h3 style='margin-bottom:3em;'><%= simple_format @award.content %></h3>
+      </div><!-- span8 -->
+      <div class='span4' style='padding-top:1em;min-height:300px;'>
+        <div class='well'>
+          <h4>만든 사람</h4>
+          <div class='media'>
+            <a class='pull-left'>
+              <%= image_tag @award.user.profile_image, class: 'media-object', style: 'width: 50px;' %>
+            </a>
+            <div class='media-body'>
+              <h4 class='media-heading'>
+                <i class='icon-<%= @award.user.omniauth_provider %>'></i> <%= @award.user.name %>
+              </h4>
+              <p><%= link_to @award.user.omniauth_url, @award.user.omniauth_url %></p>
+            </div>
+
+            <h4>상품</h4>
+            <p><%= @award.prize %></p>
+
+            <% unless @award.url.blank? %>
+              <h4>URL</h4>
+              <p><%= link_to @award.url, @award.url %></p>
+            <% end %>
+
+            <% unless @award.address.blank? %>
+              <h4>주소</h4>
+              <p><%= address %></p>
+            <% end %>
+
+            <% unless @award.user.promise.blank? %>
+              <h4>만든 사람이 한 투표 약속</h4>
+              <p><%= @award.user.promise.reason %></p>
+            <% end %>
+          </div>
+        </div>
+      </div><!-- span4 -->
+    </div>
+  </div>
+</section>

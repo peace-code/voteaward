@@ -8,8 +8,21 @@
 
     <%= render 'encourage_box' %>
 
-    <div class='row masonry_container'>
-      <%= render @awards %>
-    </div>
+    <div class='tabbable'>
+      <ul class="nav nav-tabs">
+        <li class="active">
+          <a href="#tab1"><%= Award.all.count %>개의 투표 어워드</a>
+        </li>
+        <li class='disabled'><a href="#tab2"><i class='icon-wrench'></i>지도로 어워드 보기</a></li>
+        <li class='disabled'><a href="#tab3"><i class='icon-wrench'></i>당첨되었어요! (작업중)</a></li>
+      </ul>
+      <div class='tab-content'>
+        <div class='row masonry_container tab-pane active' id='tab1'>
+          <%= render @awards %>
+        </div>
+        <div class='row tab-pane active' id='tab2'></div>
+        <div class='row tab-pane active' id='tab3'></div>
+      </div>
+    </div><!-- tabbable -->
   </div>
 </section>

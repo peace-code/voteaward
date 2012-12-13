@@ -9,6 +9,8 @@ class Award
   field :title
   field :content
   field :prize
+  field :address
+  field :url
 
   # validations
   validates_presence_of :title, :content, :prize
