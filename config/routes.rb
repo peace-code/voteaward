@@ -13,6 +13,7 @@ Voteaward::Application.routes.draw do
   match 'home' => 'pages#home', as: 'home'
   match 'info' => 'pages#info', as: 'info'
   match 'discuss' => 'pages#discuss', as: 'discuss'
+  match 'banner' => 'pages#banner', as: 'banner'
 
   root :to => 'pages#home'
 end
