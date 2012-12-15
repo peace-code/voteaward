@@ -16,7 +16,7 @@
             </a>
             <div class='media-body'>
               <h4 class='media-heading'>
-                <i class='icon-<%= @award.user.omniauth_provider %>'></i> <%= @award.user.name %>
+                <i class='icon-<%= @award.user.omniauth_provider %>'></i> <%= link_to @award.user.name, @award.user %>
               </h4>
               <p><%= link_to @award.user.omniauth_url, @award.user.omniauth_url %></p>
             </div>
