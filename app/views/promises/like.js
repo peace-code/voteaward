@@ -1,1 +1,1 @@
-$('.promise-<%= @promise.id %>').find('span.likes').html("(<%= @promise.likes %>)");
+$('.promise-<%= @promise.id %>').find('span.likes').html("<%= @promise.likes %>");

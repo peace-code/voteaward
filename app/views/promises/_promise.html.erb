@@ -9,10 +9,10 @@
         <p class='muted' style='font-size:0.85em'><%= raw "<b>#{promise.candidate.name}</b>을(를) 지지하는" if ( ! promise.candidate.blank? && promise.show_candidate == true ) %> <%= content_tag :b, promise.area %>의 <%= content_tag :b, promise.age %></p>
         <p><%= promise.reason %></p>
         <%= link_to '수정', edit_promise_path(promise) if user_signed_in? && promise.user == current_user %>
+        <%= link_to like_promise_path(promise), method: :post, remote: true, class: '' do %>
+          좋아요! <i class='icon-thumbs-up'></i> <%= content_tag :span, "#{promise.likes}", class: 'likes', style: 'font-weight:bold;' %>
+        <% end %>
       </div>
     </div>
-    <p><%= link_to like_promise_path(promise), method: :post, remote: true, class: 'btn btn-block' do %>
-      <i class='icon-thumbs-up'></i> 좋아요! <%= content_tag :span, "(#{promise.likes})", class: 'likes' %>
-      <% end %></p>
   </div>
 </div>
