@@ -1,6 +1,6 @@
 <div class='span4'>
   <div class='infobox'>
-    <h3><i class='icon-map-marker'></i> <%= link_to event.title, event %></h3>
+    <h4><i class='icon-map-marker'></i> <%= link_to event.title, event %></h4>
     <% if event.image.blank? %>
       <%= simple_format event.content %>
     <% else %>

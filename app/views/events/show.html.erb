@@ -5,6 +5,9 @@
         <small><%= number_with_delimiter @event.votes.count %>명 참가 중</small>
       </h1>
     </div>
+    <div class='alert alert-info'>
+      <%= simple_format @event.content %>
+    </div>
     <div class='row'>
       <%= render @event.votes.desc(:likes) %>
     </div>
