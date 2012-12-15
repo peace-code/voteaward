@@ -5,9 +5,24 @@
         <small><%= number_with_delimiter @event.votes.count %>명 참가 중</small>
       </h1>
     </div>
-    <div class='alert alert-info'>
+    <div class='alert alert-info clearfix'>
+      <% unless @event.coordinates.blank? %>
+        <a href="https://maps.google.com/?q=<%= @event.address %>" taget='_blank'><%= image_tag "http://maps.google.com/maps/api/staticmap?zoom=15&size=128x128&maptype=roadmap
+          &markers=color:blue|label:S%7C#{@event.coordinates[1]},#{@event.coordinates[0]}&sensor=false", class: 'pull-left', style: 'margin-right: 1em;' %></a>
+        <%= content_tag :p, "위치 : #{@event.address}" %>
+      <% end %>
       <%= simple_format @event.content %>
     </div>
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style ">
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+      <a class="addthis_button_tweet"></a>
+      <a class="addthis_button_pinterest_pinit"></a>
+      <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-502c5e680ade902a"></script>
+    <!-- AddThis Button END -->
     <div class='row'>
       <%= render @event.votes.desc(:likes) %>
     </div>

@@ -83,6 +83,7 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.3)
+    geocoder (1.1.3)
     hashie (1.2.0)
     highline (1.6.15)
     hike (1.2.1)
@@ -221,6 +222,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   fog
+  geocoder
   jbuilder
   jquery-rails
   koala
