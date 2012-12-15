@@ -1,34 +1,44 @@
 <section id='votes'>
   <div class='container'>
     <div class='page-header'>
-      <h1>나 투표했소!</h1>
+      <h1>나는 투표했소!</h1>
     </div>
 
-    <div class='alert alert-info'>
-      <h4>투표하셨어요? 투표 인증하시고 이벤트에도 참여하세요!</h4>
-      <p>
+    <div class='alert alert-danger'>
+      <h4 style='margin-bottom:0.5em;'>현재 진행중인 투표소 이벤트들입니다!</h4>
+      <% @events.each do |event| %>
+        <%= link_to event.title, event, class: 'btn btn-danger btn-large' %>
+      <% end %>
+    </div>
 
-        <br><%= link_to '나 투표했소!', new_vote_path, class: 'btn btn-primary btn-large' %>
+    <% if (! user_signed_in?) || current_user.votes.empty? %>
+    <div class='alert alert-info'>
+      <h4>투표하셨어요? <%= Vote.all.count+1 %>번째로 투표 인증하시고 이벤트에도 참여하세요!</h4>
+      <p>
+        <% if user_signed_in? %>
+          <br>
+          <%= link_to '나 투표했소!', new_vote_path, class: 'btn btn-primary btn-large' %>
+        <% else %>
+          <br>
+          <%= link_to raw("<i class='icon-facebook'></i> 페이스북으로 시작하기"), user_omniauth_authorize_path(:facebook), class: 'btn btn-primary btn-large' %>
+          <%= link_to raw("<i class='icon-twitter'></i> 트위터로 시작하기"), user_omniauth_authorize_path(:twitter), class: 'btn btn-primary btn-large' %>
+        <% end %>
       </p>
     </div>
+    <% end %>
 
     <div class='tabbable'>
       <ul class="nav nav-tabs">
-        <li class="">
-          <a href="#tab1">투표 패션 이벤트</a>
+        <li class="active">
+          <a href="#tab1"><i class='icon-user'></i> <%= Vote.all.count %>명의 투표 인증</a>
         </li>
-        <li class='active'>
-          <a href="#tab2"><%= Vote.all.count %>명의 투표 인증</a>
-        </li>
-      </ul>
+        <li class='disabled'><a href="#tab2"><i class='icon-map-marker'></i>지도로 보기 (작업중)</a></li>
+      </ul><!-- nav -->
       <div class='tab-content'>
-        <div class='row tab-pane masonry_container' id='tab1'>
-
-        </div>
-        <div class='row tab-pane active' id='tab2'>
+        <div class='row masonry_container tab-pane active' id='tab1'>
           <%= render @votes %>
         </div>
-      </div>
-    </div>
+      </div><!-- tab-content -->
+    </div><!-- tabbable -->
   </div>
 </section>

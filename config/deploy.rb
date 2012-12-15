@@ -35,6 +35,7 @@ namespace :deploy do
     run "ln -nfs #{shared_path}/config/mongoid.yml #{release_path}/config/mongoid.yml"
     run "ln -nfs #{shared_path}/config/credentials/facebook_credential.yml #{release_path}/config/credentials/facebook_credential.yml"
     run "ln -nfs #{shared_path}/config/credentials/twitter_credential.yml #{release_path}/config/credentials/twitter_credential.yml"
+    run "ln -nfs #{shared_path}/config/credentials/fog_credential.yml #{release_path}/config/credentials/fog_credential.yml"
   end
   after 'deploy:create_symlink', 'deploy:create_symlink_shared'
 

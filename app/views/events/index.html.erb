@@ -1,0 +1,14 @@
+<section id='events'>
+  <div class='container'>
+    <div class='page-header'>
+      <h1>투표소 이벤트</h1>
+    </div>
+    <div class='alert alert-info'>
+      <h4 style='margin-bottom:0.5em;'>투표를 마쳤으니 이제 함께 놀아 봅시다!!</h4>
+      <%= link_to '투표소 이벤트 만들기', new_event_path, class: 'btn btn-primary btn-large' %>
+    </div>
+    <div class='row masonry_container'>
+      <%= render @events %>
+    </div>
+  </div>
+</section>

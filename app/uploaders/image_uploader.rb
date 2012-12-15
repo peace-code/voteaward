@@ -9,7 +9,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  if Rails.env == 'production'
+    storage :fog
+  else
+    storage :file
+  end
+
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -23,7 +28,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  # process :resize_to_fit => [1024, 1024]
+  process :resize_to_fill => [1024, 1024]
 
   # Create different versions of your uploaded files:
   version :thumb do
@@ -50,4 +55,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  def get_exif( name )
+    manipulate! do |img|
+      return img["EXIF:" + name]
+    end
+  end
 end

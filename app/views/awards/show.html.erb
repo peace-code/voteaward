@@ -1,10 +1,20 @@
-<section id='promise'>
+<section id='award'>
   <div class='container'>
     <div class='row'>
       <div class='span8'>
         <div class='page-header'>
           <h1><i class='icon icon-gift'></i> <%= "#{@award.title}" %> <small>어워드</small></h1>
         </div>
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style ">
+          <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+          <a class="addthis_button_tweet"></a>
+          <a class="addthis_button_pinterest_pinit"></a>
+          <a class="addthis_counter addthis_pill_style"></a>
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-502c5e680ade902a"></script>
+        <!-- AddThis Button END -->
         <h3 style='margin-bottom:3em;'><%= simple_format @award.content %></h3>
       </div><!-- span8 -->
       <div class='span4' style='padding-top:1em;min-height:300px;'>

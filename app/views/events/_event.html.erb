@@ -1,0 +1,13 @@
+<div class='span4'>
+  <div class='infobox'>
+    <h3><i class='icon-map-marker'></i> <%= link_to event.title, event %></h3>
+    <% if event.image.blank? %>
+      <%= simple_format event.content %>
+    <% else %>
+      <%= link_to event do %><%= image_tag event.image, style: 'width: 100%' %><% end %>
+    <% end %>
+    <h4>참가자 <%= event.votes.count %>명, 좋아요 <%= event.likes %>개</h4>
+    <p class='muted'><%= link_to raw("<i class='icon-#{event.user.omniauth_provider}'></i> #{event.user.name}"), event.user %></p>
+    <%= link_to '수정', edit_event_path(event) if user_signed_in? && current_user == event.user %>
+  </div>
+</div>

@@ -8,9 +8,10 @@ gem 'rails', '3.2.9'
 gem 'mongoid'
 
 # file upload
+gem 'rmagick'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
-gem 'rmagick'
+gem "fog"
 
 # auth
 gem 'devise'

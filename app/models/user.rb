@@ -8,6 +8,7 @@ class User
   has_many :votes
   has_many :awards
   has_many :campaigns
+  has_many :events
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

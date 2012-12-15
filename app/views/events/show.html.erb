@@ -1,0 +1,12 @@
+<section id='event'>
+  <div class='container'>
+    <div class='page-header'>
+      <h1><%= @event.title %>
+        <small><%= number_with_delimiter @event.votes.count %>명 참가 중</small>
+      </h1>
+    </div>
+    <div class='row'>
+      <%= render @event.votes.desc(:likes) %>
+    </div>
+  </div>
+</section>

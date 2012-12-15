@@ -1,6 +1,7 @@
 class VotesController < ApplicationController
   def index
     @votes = Vote.all
+    @events = Event.all
   end
 
   def new
@@ -8,6 +9,11 @@ class VotesController < ApplicationController
   end
 
   def create
+    unless user_signed_in? && current_user.votes.empty?
+      redirect_to votes_url
+      return nil
+    end
+
     @vote = current_user.votes.build(params[:vote])
     if @vote.save
       redirect_to votes_url, notice: I18n.t('vote.created')
@@ -31,5 +37,11 @@ class VotesController < ApplicationController
 
   def show
     @vote = Vote.find(params[:id])
+  end
+
+  def like
+    @vote = Vote.find(params[:id])
+    @vote.inc(:likes, 1)
+    @vote.event.inc(:likes, 1)
   end
 end
