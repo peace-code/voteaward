@@ -5,6 +5,7 @@ class User
   # association
   has_one :promise
   has_one :giveup
+  has_many :votes
   has_many :awards
   has_many :events
 

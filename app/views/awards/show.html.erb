@@ -31,7 +31,7 @@
 
             <% unless @award.address.blank? %>
               <h4>주소</h4>
-              <p><%= address %></p>
+              <p><%= @award.address %></p>
             <% end %>
 
             <% unless @award.user.promise.blank? %>

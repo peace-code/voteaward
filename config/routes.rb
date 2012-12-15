@@ -7,6 +7,7 @@ Voteaward::Application.routes.draw do
 
   resources :promises
   resources :awards
+  resources :votes
   resources :giveups
   resources :events
 

@@ -1,7 +1,47 @@
 <section id='user'>
   <div class='container'>
     <div class='page-header'>
-      <h1><%= @user.name %></h1>
+      <h1><%= @user.name %>
+        <small><%= link_to raw("<i class='icon-#{@user.omniauth_provider}'></i> #{@user.omniauth_url}"), @user.omniauth_url %></small>
+      </h1>
     </div>
+    <div class='row'>
+      <div class='span4'>
+        <div class='well'>
+          <h4>나 투표했소</h4>
+          <% if @user.votes.empty? %>
+            <p>투표 인증을 하지 않으셨습니다.</p>
+            <p><%= link_to '나 투표했소!', new_vote_path, class: 'btn btn-large btn-block btn-info' %></p>
+          <% end %>
+        </div>
+      </div>
+      <div class='span4'>
+        <div class='well'>
+          <h4>투표 어워드</h4>
+          <% if @user.awards.empty? %>
+            <p>투표 어워드를 만들지 않으셨습니다.</p>
+            <p><%= link_to '투표 어워드 만들기', new_award_path, class: 'btn btn-large btn-block btn-warning' %></p>
+          <% else %>
+            <% @user.awards.each do |award| %>
+              <h5><%= link_to award.title, award %></h5>
+              <%= simple_format award.content %>
+              <p><%= award.prize %></p>
+              <% if award.url %><p><%= link_to award.url, award.url %></p><% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+      <div class='span4'>
+        <div class='well'>
+          <h4>투표하겠소</h4>
+          <% if @user.promise.blank? %>
+            <p>투표 약속에 참여하지 않으셨습니다.</p>
+            <p><%= link_to '투표하겠소!', new_promise_path, class: 'btn btn-large btn-block btn-danger' %></p>
+          <% else %>
+            <%= simple_format @user.promise.reason %>
+          <% end %>
+        </div>
+      </div>
+    </div><!-- row -->
   </div>
 </section>
