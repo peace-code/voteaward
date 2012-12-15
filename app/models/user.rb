@@ -7,7 +7,7 @@ class User
   has_one :giveup
   has_many :votes
   has_many :awards
-  has_many :events
+  has_many :campaigns
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

@@ -1,0 +1,9 @@
+<div class='span4 masonry_item'>
+  <div class='infobox'>
+    <%= link_to image_tag(campaign.image, style: "width:100%"), campaign.url %>
+    <h4><%= link_to campaign.title, campaign.url %></h4>
+    <p><%= simple_format campaign.description %></p>
+    <p class='muted'><%= campaign.user.name %></p>
+    <%= link_to '수정', edit_campaign_path(campaign) if user_signed_in? && current_user == campaign.user %>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<section id='votes'>
+  <div class='container'>
+    <div class='page-header'>
+      <h1>나 투표했소!</h1>
+    </div>
+
+    <div class='alert alert-info'>
+      <h4>투표하셨어요? 투표 인증하시고 이벤트에도 참여하세요!</h4>
+      <p>
+
+        <br><%= link_to '나 투표했소!', new_vote_path, class: 'btn btn-primary btn-large' %>
+      </p>
+    </div>
+
+    <div class='tabbable'>
+      <ul class="nav nav-tabs">
+        <li class="">
+          <a href="#tab1">투표 패션 이벤트</a>
+        </li>
+        <li class='active'>
+          <a href="#tab2"><%= Vote.all.count %>명의 투표 인증</a>
+        </li>
+      </ul>
+      <div class='tab-content'>
+        <div class='row tab-pane masonry_container' id='tab1'>
+
+        </div>
+        <div class='row tab-pane active' id='tab2'>
+          <%= render @votes %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

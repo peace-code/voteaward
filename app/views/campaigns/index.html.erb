@@ -1,0 +1,15 @@
+<section id='campaigns'>
+  <div class='container'>
+    <div class='page-header'>
+      <h1>다른 캠페인들
+        <small><%= link_to '추가하기', new_campaign_path if user_signed_in? %></small>
+      </h1>
+    </div>
+    <div class='alert alert-success'>
+      2012년 대통령선거와 관련된 재미난 캠페인들을 모았습니다!
+    </div>
+    <div class='row masonry_container'>
+      <%= render @campaigns %>
+    </div>
+  </div>
+</section>

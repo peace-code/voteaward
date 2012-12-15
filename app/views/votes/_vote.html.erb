@@ -1,0 +1,8 @@
+<div class='span3'>
+  <div class='infobox'>
+    <%= link_to vote do %><%= image_tag vote.image, style: 'width: 100%' %><% end %>
+    <h4><%= link_to vote.title, vote %></h4>
+    <p class='muted'><%= link_to raw("<i class='icon-#{vote.user.omniauth_provider}'></i> #{vote.user.name}"), vote.user %></p>
+    <%= link_to '수정', edit_vote_path(vote) if user_signed_in? && current_user == vote.user %>
+  </div>
+</div>

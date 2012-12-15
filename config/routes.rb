@@ -10,6 +10,7 @@ Voteaward::Application.routes.draw do
   resources :votes
   resources :giveups
   resources :events
+  resources :campaigns
 
   match 'home' => 'pages#home', as: 'home'
   match 'info' => 'pages#info', as: 'info'
