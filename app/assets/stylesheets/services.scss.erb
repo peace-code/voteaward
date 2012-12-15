@@ -1,0 +1,118 @@
+@font-face {
+  font-family:'Malgun Gothic' !important;
+  text-shadow: 0 0 1px rgba(0,0,0,0.3);
+}
+
+body{
+  font-family:'Malgun Gothic' !important;
+}
+
+.navbar-fixed-top .nav .navbar-fixed-top{
+  height:30px;
+}
+
+.logo{
+  position:fixed;
+  top:-135px;
+}
+
+@media only screen and (max-width: 1000px){.top_logo{display:none;}}
+
+.navbar-fixed-top .nav.nav-menu {
+  margin-left:180px;
+}
+
+.navbar-fixed-top .nav li a {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.top_img{
+  background:url(<%= asset_path "bg.png" %>);
+  height:558px;
+  margin-top: -50px;
+  position: relative;
+
+  .main_img {
+    margin-left:40px;
+  }
+
+  .count_bg span{
+    background-color:#383838;
+    color: #FFF;
+    line-height: 1.05em;
+    margin-right:4px;
+    font-size:40px;
+    font-weight:bold;
+    padding:3px 5px 5px 5px;
+    float:left;
+  }
+
+  .count_label{
+    float:left;
+    margin-top:26px;
+    font-size:12px;
+  }
+
+  .graph_bg{
+    width:400px;
+    background:url(<%= asset_path "graph_bg.png" %>) no-repeat;
+    height:15px;
+    margin-top:60px;
+  }
+
+  .graph_value{
+    display:block;
+    width:200px;
+    background-color:#ff5900;
+    height:15px;
+    margin-top:-15px;
+    float:left;
+  }
+
+  .intro_box{
+    width:300px;
+    position:absolute;
+    top:150px;
+    left:330px;
+    color:#484848;
+    font-size:12px;
+    text-align:center;
+  }
+
+  .main_contents{
+    position:absolute;
+    top:400px;
+    left:330px;
+  }
+
+  .intro{
+    font-size:30px;
+    padding:10px;
+    color:#383838;
+    font-weight:bold;
+    margin-top:10px;
+  }
+
+  .cow{
+    position:absolute;
+    top:375px;
+    left:720px;
+  }
+}
+
+.footer{
+  background:#eee;
+}
+
+@media only screen and (max-width: 1000px) {
+  .main_img{display:none} .top_img{  background:#fff; height:100px;}
+}
+
+@media only screen and (max-width: 1000px){
+  .main_img{display:none}
+  .top_img{background:none; height:170px;}
+  .intro_box{ margin-left:10px; color:#000; font-size:14px; text-align:left; position:block; background:none; width:90%; top:60px;}
+  .main_contents{display:none}
+  .cow{display:none}
+}

@@ -21,6 +21,12 @@ $(document).ready(function() {
     alert('준비중입니다');
   });
 
+  $('.navbar.navbar-fixed-top .logo').hover(function(){
+    $('.navbar.navbar-fixed-top .logo').stop().animate({"top":"0"},600);
+    },function(){
+    $('.navbar.navbar-fixed-top .logo').stop().animate({"top":"-135"},600);
+  });
+
   var $container = $('.masonry_container');
   $container.imagesLoaded(function(){
     $container.masonry({

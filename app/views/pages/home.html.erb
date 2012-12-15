@@ -1,23 +1,29 @@
 <section id='about'>
-  <div class='jumbotron masthead' style='background:#DDC; padding: 2em 0; margin-bottom: 2em; '>
-    <div class="container">
-      <%= image_tag 'logo.png', class: 'pull-left', style: 'margin: 1em;' %>
-      <h1>2012년 투표대잔치</h1>
-      <p style='font-size:1.5em; line-height: 200%'>
-        5년에 한번 뿐인 대통령 선거.
-        <br>나라의 운을 결정하는 이벤트인데, 우리가 할 수 있는 거라곤 지켜보다가 투표하는 것 뿐.
-        <br>뭔가 아쉽지 않나요?
-        <br> 그래서 준비했습니다!
-      </p>
+  <div class="jumbotron masthead top_img" >
+    <div class="container" style='position:relative;'>
+      <%= image_tag 'main_img.png', class: 'main_img' %>
+      <div class="main_contents">
+        <div class="count_bg"><% ('%05i' % Promise.all.count).each_char do |c| %><span><%= c %></span><% end %></div>
+        <label class="count_label">
+          명이 투표를 약속했습니다
+        </label>
+        <div class="graph_bg">
+        </div>
+        <div class="graph_value">
+        </div>
+      </div>
+      <div class="intro_box">
+        <label class="intro">2012년 투표대잔치</label>
+        5년에 한번 뿐인 대통령 선거. <br />
+        나라의 운을 결정하는 이벤트인데, 우리가 할 수 있는 거라곤 지켜보다가 투표하는 것 뿐.
+        뭔가 아쉽지 않나요? 그래서 준비했습니다!
+      </div>
+      <div class="cow">
+        <%= image_tag 'cow.png', class: 'cow_img' %>
+      </div>
     </div>
   </div>
   <div class='container'>
-    <div class='alert-danger alert'>
-      <h3>"투표 대잔치 배너"를 블로그나 사이트에 달아주세요!</h3>
-      <p>선거기간 동안은 투표 독려 배너가, 투표일에는 투표 인증을 요청하는 배너가 됩니다.
-      <%= link_to '배너 달기', banner_path, class: 'btn btn-danger' %>
-      </p>
-    </div>
     <div class='row'>
       <div class='span4'>
         <div class='well'>
@@ -42,6 +48,12 @@
         <a class="twitter-timeline" href="https://twitter.com/search?q=%23%ED%88%AC%ED%91%9C%EB%8C%80%EC%9E%94%EC%B9%98" data-widget-id="279244753982341121">Tweets about "#투표대잔치"</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
       </div>
+    </div><!-- row -->
+    <div class='alert-danger alert'>
+      <h3>"투표 대잔치 배너"를 블로그나 사이트에 달아주세요!</h3>
+      <p>선거기간 동안은 투표 독려 배너가, 투표일에는 투표 인증을 요청하는 배너가 됩니다.
+      <%= link_to '배너 달기', banner_path, class: 'btn btn-danger' %>
+      </p>
     </div>
   <div>
 </section>
