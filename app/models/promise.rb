@@ -13,6 +13,7 @@ class Promise
   field :area
   field :sex
   field :age
+  field :likes, type: Integer, default: 0
 
   # validation
   validates_presence_of :reason, :area, :sex, :age

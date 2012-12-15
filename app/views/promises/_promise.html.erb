@@ -1,6 +1,6 @@
-<div class='span4 masonry_item'>
+<div class='span4 masonry_item promise-<%= promise.id %>'>
   <div class='infobox'>
-    <div class='media'>
+    <div class='media' style='margin-bottom:5px;'>
       <h4><span style='font-size:2.0em;font-style:italic;'><%= promise.seq %></span> <i class='icon-<%= promise.user.omniauth_provider %>'></i> <%= link_to "#{promise.user.name}", promise.user %></h4>
       <a class='pull-left'>
         <%= image_tag promise.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
@@ -11,5 +11,8 @@
         <%= link_to '수정', edit_promise_path(promise) if user_signed_in? && promise.user == current_user %>
       </div>
     </div>
+    <p><%= link_to like_promise_path(promise), method: :post, remote: true, class: 'btn btn-block' do %>
+      <i class='icon-thumbs-up'></i> 좋아요! <%= content_tag :span, "(#{promise.likes})", class: 'likes' %>
+      <% end %></p>
   </div>
 </div>

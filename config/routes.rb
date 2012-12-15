@@ -5,7 +5,9 @@ Voteaward::Application.routes.draw do
   resources :candidates
   resources :users
 
-  resources :promises
+  resources :promises do
+    member { post :like }
+  end
   resources :awards
   resources :votes do
     member { post :like }

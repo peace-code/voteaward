@@ -27,16 +27,21 @@ class PromisesController < ApplicationController
   end
 
   def edit
-    @promise = Promise.find(params[:id])
+    @promise = current_user.promise
   end
 
   def update
-    @promise = Promise.find(params[:id])
+    @promise = current_user.promise
     redirect_to promises_url if @promise.user != current_user
     if @promise.update_attributes(params[:promise])
       redirect_to promises_url, notice: I18n.t('promise.updated')
     else
       redirect_to promises_url
     end
+  end
+
+  def like
+    @promise = Promise.find(params[:id])
+    @promise.inc(:likes, 1)
   end
 end
