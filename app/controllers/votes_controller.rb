@@ -48,6 +48,6 @@ class VotesController < ApplicationController
   def like
     @vote = Vote.find(params[:id])
     @vote.inc(:likes, 1)
-    @vote.event.inc(:likes, 1)
+    @vote.event.inc(:likes, 1) unless @vote.event.blank?
   end
 end
