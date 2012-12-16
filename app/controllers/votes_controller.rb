@@ -18,9 +18,9 @@ class VotesController < ApplicationController
     if @vote.save
       message = I18n.t('vote.share', username: current_user.name, title: @vote.title, content: @vote.content, seq: @vote.seq)
       if current_user.omniauth_provider == :twitter
-        current_user.twitter.update([votes_url, message, I18n.t('g.hashtag')].join(' '))
+        current_user.twitter.update([vote_url(@vote), message, I18n.t('g.hashtag')].join(' '))
       else
-        current_user.facebook.put_wall_post(message, {name: I18n.t('g.title'), link: votes_url})
+        current_user.facebook.put_wall_post(message, {name: I18n.t('g.title'), link: vote_url(@vote)})
       end
       redirect_to votes_url, notice: I18n.t('vote.created')
     else

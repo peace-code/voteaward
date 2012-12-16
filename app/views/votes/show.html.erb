@@ -1,10 +1,17 @@
+<%= content_for :fb_meta do %>
+  <meta property="og:site_name" content="투표대잔치" />
+  <meta property="og:title" content="<%= @vote.title %>" />
+  <meta property="og:url"   content="<%= vote_url(@vote) %>"/>
+  <meta property="og:image" content="<%= (@vote.image.blank?) ? request.protocol + request.host + asset_path('logo.png') : @vote.image_url %>" />
+  <meta property="og:description" content="<%= @vote.content %>" />
+<% end %>
 <section id='vote'>
   <div class='container'>
     <div class='row'>
       <div class='span8'>
 
         <div class='page-header'>
-          <h1><i class='icon icon-ok'></i> <%= "#{@vote.title}" %><small><i class='icon-thumbs-up'></i> <%= number_with_delimiter @vote.likes %>개</small></h1>
+          <h1><i class='icon icon-ok'></i> <%= "#{@vote.title}" %> <small><i class='icon-thumbs-up'></i> <%= number_with_delimiter @vote.likes %>개</small></h1>
         </div>
         <!-- AddThis Button BEGIN -->
         <div class="addthis_toolbox addthis_default_style ">
