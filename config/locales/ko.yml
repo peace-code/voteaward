@@ -9,3 +9,5 @@ ko:
     share: '내가 투표하는 이유는 "%{reason}"!! %{username}님이 %{seq}번째 투표 약속을 하셨습니다. 지금 함께 약속해 주세요! :)'
   award:
     share: "%{username}님이 '%{title}' 투표 어워드를 제정하셨습니다! - %{content}. 상품은 '%{prize}'!!"
+  vote:
+    share: '나는 투표했소!! %{username}님이 %{seq}번째 투표 인증을 하셨습니다. 투표하시면서 한 말씀하시길 "%{content}"'
