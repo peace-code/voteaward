@@ -3,7 +3,9 @@ Voteaward::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :candidates
-  resources :users
+  resources :users do
+    collection { get :me }
+  end
 
   resources :promises do
     member { post :like }
