@@ -1,3 +1,10 @@
+<%= content_for :fb_meta do %>
+  <meta property="og:site_name" content="투표대잔치" />
+  <meta property="og:title" content="<%= @user.name %>님의 2012년 투표어워드" />
+  <meta property="og:url"   content="<%= user_url(@user) %>"/>
+  <meta property="og:image" content="<%= request.protocol + request.host + asset_path('badge2_on.png') %>" />
+  <meta property="og:description" content="<%= "#{@user.name}님에게 투표어워드를 드립니다" %>" />
+<% end %>
 <section id='user'>
   <div class='container'>
     <div class='page-header'>
