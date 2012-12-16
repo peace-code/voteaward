@@ -1,5 +1,6 @@
 <%= content_for :fb_meta do %>
-  <meta property="og:title" content="투표대잔치 - <%= @event.title %>" />
+  <meta property="og:site_name" content="투표대잔치" />
+  <meta property="og:title" content="<%= @event.title %>" />
   <meta property="og:url"   content="<%= event_url(@event) %>"/>
   <meta property="og:image" content="<%= (@event.image.blank?) ? request.protocol + request.host + asset_path('logo.png') : @event.image_url %>" />
   <meta property="og:description" content="<%= @event.content %>" />

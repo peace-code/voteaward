@@ -8,6 +8,7 @@
     <% if content_for?(:fb_meta) %>
       <%= yield :fb_meta %>
     <% else %>
+      <meta property="og:site_name" content="투표대잔치" />
       <meta property="og:title" content="투표대잔치" />
       <meta property="og:url"   content="http://voteaward.com" />
       <meta property="og:image" content="<%= request.protocol + request.host + asset_path('logo.png') %>" />
