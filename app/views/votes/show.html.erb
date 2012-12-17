@@ -11,7 +11,7 @@
       <div class='span8'>
 
         <div class='page-header'>
-          <h1><i class='icon icon-ok'></i> <%= "#{@vote.title}" %> <small><i class='icon-thumbs-up'></i> <%= number_with_delimiter @vote.likes %>개</small></h1>
+          <h1><i class='icon icon-ok'></i> <%= "#{@vote.title}" %> <small><i class='icon-thumbs-up'></i> <%= number_with_delimiter @vote.likes %>  <i class='icon-comment'></i> <%= number_with_delimiter @vote.comments.count %></small></h1>
         </div>
         <!-- AddThis Button BEGIN -->
         <div class="addthis_toolbox addthis_default_style ">
@@ -27,7 +27,12 @@
         <% unless @vote.image.blank? %>
         <%= image_tag @vote.image, style: 'width: 100%' %>
         <% end %>
-        <h3 style='margin-bottom:3em;'><%= simple_format @vote.content %></h3>
+        <h4 style='margin-bottom:3em;'><%= simple_format @vote.content %></h4>
+
+        <div class='well'>
+          <%= render @vote.comments %>
+        </div>
+
       </div><!-- span8 -->
       <div class='span4' style='padding-top:1em;min-height:300px;'>
         <div class='well'>

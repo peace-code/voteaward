@@ -5,6 +5,7 @@ class Vote
   # association
   belongs_to :user
   belongs_to :event
+  has_many :comments, as: :commentable
 
   # fields
   field :seq, type: Integer

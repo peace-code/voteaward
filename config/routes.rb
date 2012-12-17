@@ -7,12 +7,9 @@ Voteaward::Application.routes.draw do
     collection { get :me }
   end
 
-  resources :promises do
+  resources :promises, :awards, :votes, shallow: true do
     member { post :like }
-  end
-  resources :awards
-  resources :votes do
-    member { post :like }
+    resources :comments
   end
   resources :giveups
   resources :events
