@@ -4,6 +4,7 @@ class Award
 
   # association
   belongs_to :user
+  has_many :comments, as: :commentable
 
   #fields
   field :title

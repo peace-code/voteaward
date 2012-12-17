@@ -27,7 +27,7 @@
         <% unless @vote.image.blank? %>
         <%= image_tag @vote.image, style: 'width: 100%' %>
         <% end %>
-        <h4 style='margin-bottom:3em;'><%= simple_format @vote.content %></h4>
+        <h4 style='margin-bottom:3em;line-height:150%;'><%= simple_format @vote.content %></h4>
 
         <div class='well'>
           <%= render @vote.comments %>

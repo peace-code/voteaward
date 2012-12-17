@@ -1,7 +1,8 @@
 <div class='span6 masonry_item'>
   <div class='infobox'>
     <h4><i class='icon icon-gift'></i> <%= link_to "#{award.title} 어워드", award %>
-      <small><i class='icon-<%= award.user.omniauth_provider %>'></i> <%= link_to award.user.name, award.user %></small></h4>
+      <small><i class='icon-<%= award.user.omniauth_provider %>'></i> <%= link_to award.user.name, award.user %>
+      <i class='icon-comment'></i> <%= link_to number_with_delimiter(award.comments.count), award %></small></h4>
     <div class='media'>
       <a class='pull-left'>
         <%= image_tag award.user.profile_image, class: 'media-object', style: 'width: 80px;' %>

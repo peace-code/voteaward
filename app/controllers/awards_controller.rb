@@ -24,6 +24,7 @@ class AwardsController < ApplicationController
 
   def show
     @award = Award.find(params[:id])
+    @award.comments.build
   end
 
   def destroy

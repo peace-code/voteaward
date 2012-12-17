@@ -15,7 +15,10 @@
         <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-502c5e680ade902a"></script>
         <!-- AddThis Button END -->
-        <h3 style='margin-bottom:3em;'><%= simple_format @award.content %></h3>
+        <h4 style='margin-bottom:3em;line-height:150%;'><%= simple_format @award.content %></h4>
+        <div class='well'>
+          <%= render @award.comments %>
+        </div>
       </div><!-- span8 -->
       <div class='span4' style='padding-top:1em;min-height:300px;'>
         <div class='well'>
