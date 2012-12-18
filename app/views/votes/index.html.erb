@@ -35,8 +35,10 @@
         <li class='disabled'><a href="#tab2"><i class='icon-map-marker'></i>지도로 보기 (작업중)</a></li>
       </ul><!-- nav -->
       <div class='tab-content'>
-        <div class='row masonry_container tab-pane active' id='tab1'>
-          <%= render @votes %>
+        <div class='tab-pane active' id='tab1'>
+          <ul class="masonry_container thumbnails">
+            <%= render @votes %>
+          </ul>
         </div>
       </div><!-- tab-content -->
     </div><!-- tabbable -->
