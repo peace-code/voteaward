@@ -1,4 +1,4 @@
-<div class='span3 masonry_item vote-<%=vote.id %>'>
+<li class='span3 masonry_item vote-<%=vote.id %>' style='margin-bottom:1em;'>
   <div class="thumbnail" style='padding:10px;'>
     <% unless vote.image.blank? %>
       <%= link_to vote do %><%= image_tag vote.image, style: 'width: 100%;' %><% end %>
@@ -14,8 +14,4 @@
       <% end %></p>
     <%= link_to '수정', edit_vote_path(vote) if user_signed_in? && current_user == vote.user %>
   </div>
-</div>
-
-
-<li class="span4">
 </li>
