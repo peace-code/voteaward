@@ -9,7 +9,7 @@
     <% if vote.image.blank? %>
       <%= simple_format vote.content %>
     <% end %>
-    <p><%= link_to like_vote_path(vote), method: :post, remote: true, class: 'btn btn-block btn-warning' do %>
+    <p><%= link_to like_vote_path(vote), method: :post, remote: true, class: 'btn btn-block' do %>
         <i class='icon-thumbs-up'></i> 좋아요! <%= content_tag :span, "(#{vote.likes})", class: 'likes' %>
       <% end %></p>
     <%= link_to '수정', edit_vote_path(vote) if user_signed_in? && current_user == vote.user %>
