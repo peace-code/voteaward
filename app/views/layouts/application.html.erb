@@ -64,7 +64,7 @@
             <ul class="nav nav-menu">
               <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소(#{Sequence.get_last_id('promise')}명)", promises_path %></li>
               <li class='<%= 'active' if params['controller'] == 'awards' %>'><%= link_to "투표어워드(#{Award.all.count}개)", awards_path %></li>
-              <li class=''><%= link_to "투표했소(#{Vote.all.count}개)", votes_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'votes' %>'><%= link_to "투표했소(#{Vote.all.count}개)", votes_path %></li>
               <li class='<%= 'active' if params['controller'] == 'events' %>'><%= link_to "투표소이벤트(#{Event.all.count}개)", events_path %></li>
               <li class='<%= 'active' if params['action'] == 'info' %>'><%= link_to raw("모르겠소"), info_path %></li>
               <!--

@@ -4,6 +4,8 @@
       <h1>나는 투표했소!</h1>
     </div>
 
+    <%= render 'encourage_box' %>
+
     <div class='alert alert-danger'>
       <h4 style='margin-bottom:0.5em;'>현재 진행중인 투표소 이벤트들입니다!</h4>
       <% @events.each do |event| %>
