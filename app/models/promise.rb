@@ -5,6 +5,7 @@ class Promise
   # association
   belongs_to :user
   belongs_to :candidate
+  has_and_belongs_to_many :awards
 
   # fields
   field :show_candidate, type: Boolean, default: true

@@ -30,7 +30,7 @@ $(document).ready(function() {
   var $container = $('.masonry_container');
   $container.imagesLoaded(function(){
     $container.masonry({
-      itemSelector : '.masonry_item'
+      itemSelector : '.masonry_item:visible'
     });
   });
 

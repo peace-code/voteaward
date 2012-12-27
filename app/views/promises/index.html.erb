@@ -10,19 +10,26 @@
 
     <div class='tabbable'>
       <ul class="nav nav-tabs">
-        <li class="active">
-          <a href="#tab1"><%= Promise.all.count %>명의 투표 약속</a>
-        </li>
-        <li class='disabled'><a href="#tab2"><i class='icon-wrench'></i>당첨되었어요! (작업중)</a></li>
+        <li><a href="#tab1" data-toggle='tab' onclick='show_all();'><i class="icon-user"></i><%= Promise.all.count %>명의 투표 약속</a></li>
+        <li class="active"><a href="#tab2" data-toggle='tab' onclick='show_selected();'><i class='icon-gift'></i>당선되었어요!</a></li>
       </ul>
       <div class='tab-content'>
-        <div class='row masonry_container tab-pane active' id='tab1'>
+        <div class='row masonry_container'>
           <%= render @promises %>
-        </div>
-        <div class='row tab-pane active' id='tab2'>
-
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+  function show_all() {
+    $('.masonry_item').show();
+    $('.masonry_container').masonry('reload');
+  }
+  function show_selected() {
+    $('.masonry_item').hide();
+    $('.masonry_item.selected').show();
+    $('.masonry_container').masonry('reload');
+  }
+</script>

@@ -62,7 +62,7 @@ class User
 
   # methods
   def admin?
-    %w[rest515@gmail.com dangun76@gmail.com].include?(email)
+    %w[rest515@gmail.com dangun76@gmail.com jyreds@gmail.com].include?(email)
   end
 
   def profile_image

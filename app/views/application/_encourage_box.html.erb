@@ -1,6 +1,0 @@
-    <% if user_signed_in? %>
-      <div class='alert alert-success'>
-        <i class='icon-user'></i> <%= content_tag :b, current_user.name %>님에게 2012 투표 어워드가 발급되었습니다. 수고하셨습니다!
-        <br><br><%= link_to '나의 2012 투표어워드 확인하기', me_users_path, class: 'btn btn-success btn-large' %>
-      </div>
-    <% end %>

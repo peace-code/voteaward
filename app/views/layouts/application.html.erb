@@ -103,6 +103,17 @@
       </div>
     </div>
 
+    <% if params[:controller] != 'pages' %>
+      <div class='container' style='margin-top:1em;'>
+        <% if user_signed_in? %>
+          <div class='alert alert-success'>
+            <i class='icon-user'></i> 2012 투표 어워드가 발급되었습니다!
+            <%= link_to '2012 투표어워드 확인하기', me_users_path %>
+          </div>
+        <% end %>
+      </div>
+    <% end -%>
+
     <%= yield %>
 
     <div class='footer'>

@@ -33,4 +33,16 @@ class AwardsController < ApplicationController
       redirect_to awards_url
     end
   end
+
+  def edit
+    @award = Award.find(params[:id])
+  end
+
+  def update
+    award = Award.find(params[:id])
+    if current_user.admin? || award.user == current_user
+      award.update_attributes(params[:award])
+    end
+    redirect_to award
+  end
 end

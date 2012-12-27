@@ -16,6 +16,13 @@
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-502c5e680ade902a"></script>
         <!-- AddThis Button END -->
         <h4 style='margin-bottom:3em;line-height:150%;'><%= simple_format @award.content %></h4>
+        <% if @award.promises.present? %>
+          <div class='page-header'><h3>수상자</h3></div>
+          <div class='row clearfix'>
+            <%= render @award.promises %>
+          </div>
+          <hr>
+        <% end %>
         <div class='well'>
           <%= render @award.comments %>
         </div>
