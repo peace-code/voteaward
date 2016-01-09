@@ -15,10 +15,10 @@ Voteaward::Application.routes.draw do
   resources :events
   resources :campaigns
 
-  match 'home' => 'pages#home', as: 'home'
-  match 'info' => 'pages#info', as: 'info'
-  match 'discuss' => 'pages#discuss', as: 'discuss'
-  match 'banner' => 'pages#banner', as: 'banner'
+  match 'home' => 'pages#home', as: 'home', via: [:get, :post]
+  match 'info' => 'pages#info', as: 'info', via: [:get, :post]
+  match 'discuss' => 'pages#discuss', as: 'discuss', via: [:get, :post]
+  match 'banner' => 'pages#banner', as: 'banner', via: [:get, :post]
 
   root :to => 'pages#home'
 end
