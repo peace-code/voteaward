@@ -18,5 +18,6 @@ class Award
   validates_presence_of :title, :content, :prize
 
   # scopes
-  default_scope desc(:_id)
+  default_scope -> { order(_id: :desc) }
+
 end

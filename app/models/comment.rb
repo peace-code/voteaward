@@ -13,5 +13,5 @@ class Comment
   validates_presence_of :content
 
   # scope
-  default_scope asc(:_id)
+  default_scope -> { order(_id: :asc) }
 end

@@ -15,5 +15,5 @@ class Giveup
   validates_presence_of :reason, :area, :sex, :age
 
   # scopes
-  default_scope desc(:_id)
+  default_scope -> { order(_id: :desc) }
 end

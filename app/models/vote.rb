@@ -19,7 +19,7 @@ class Vote
   validates_presence_of :title, :content
 
   # scope
-  default_scope desc(:_id)
+  default_scope -> { order(_id: :desc) }
 
   # callbacks
   before_create :assign_id
@@ -46,6 +46,7 @@ class Vote
     lng_ref = image.get_exif('GPSLongitudeRef') rescue nil
 
     return unless img_lat && img_lng && lat_ref && lng_ref
+    return if img_lat.blank? && img_lng.blank? && lat_ref.blank? && lng_ref.blank?
 
     latitude = to_frac(img_lat[0]) + (to_frac(img_lat[1])/60) + (to_frac(img_lat[2])/3600)
     longitude = to_frac(img_lng[0]) + (to_frac(img_lng[1])/60) + (to_frac(img_lng[2])/3600)

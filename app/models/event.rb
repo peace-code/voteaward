@@ -23,7 +23,8 @@ class Event
   validates_presence_of :title, :content
 
   # scope
-  default_scope desc(:_id)
+  default_scope -> { order(_id: :desc) }
+
 
   # geocode
   geocoded_by :address

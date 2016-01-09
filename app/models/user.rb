@@ -59,6 +59,11 @@ class User
   field :omniauth_uid
   field :omniauth_credentials
   field :omniauth_url
+  field :omniauth_image
+  field :omniauth
+
+  field :name
+  field :password
 
   # methods
   def admin?
@@ -74,10 +79,12 @@ class User
   end
 
   def twitter
-    @twitter ||= Twitter::Client.new(
-      oauth_token: omniauth_credentials['token'],
-      oauth_token_secret: omniauth_credentials['secret']
-    )
+    @twitter ||= Twitter::REST::Client.new do |config|
+      config.consumer_key = Rails.configuration.twitter['client_id']
+      config.consumer_secret = Rails.configuration.twitter['client_secret']
+      config.access_token = omniauth_credentials['token'],
+      config.access_token_secret = omniauth_credentials['secret']
+    end
   end
 
   def facebook

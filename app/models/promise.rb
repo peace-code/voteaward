@@ -21,7 +21,7 @@ class Promise
   validates_uniqueness_of :user_id
 
   # scope
-  default_scope desc(:_id)
+  default_scope -> { order(_id: :desc) }
 
   # callbacks
   before_create :assign_id
