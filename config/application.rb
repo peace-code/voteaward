@@ -1,22 +1,18 @@
 require File.expand_path('../boot', __FILE__)
 
-# Pick the frameworks you want:
-# require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "active_resource/railtie"
+# require "active_resource/railtie"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+require "i18n/backend/fallbacks"
+
+Bundler.require(:default, Rails.env)
 
 module Voteaward
   class Application < Rails::Application
+
+    config.eager_load = false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -75,5 +71,14 @@ module Voteaward
     # oauth
     config.facebook = YAML.load_file("#{Rails.root.to_s}/config/credentials/facebook_credential.yml")[Rails.env]
     config.twitter = YAML.load_file("#{Rails.root.to_s}/config/credentials/twitter_credential.yml")[Rails.env]
+
+    # mongoid
+    config.generators do |g|
+      g.orm :mongoid
+    end
+
+    # Configure fallbacks for mongoid errors:
+    I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
+    config.i18n.fallbacks = {'ko' => 'en'}
   end
 end
