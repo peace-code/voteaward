@@ -1,16 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+#gem 'rails', '3.2.9'
+gem 'rails', '4.0'
 
 # db
 gem 'mongoid'
+gem 'mongoid-observers'
 gem 'geocoder'
 
 # file upload
-gem 'rmagick'
+gem 'mini_magick'
 gem 'carrierwave'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
 gem "fog"
@@ -24,16 +23,12 @@ gem 'omniauth-twitter'
 gem 'koala'
 gem 'twitter'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem "therubyracer"
-  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem "therubyracer"
+gem "less-rails"
+gem 'twitter-bootstrap-rails', '2.2.8'
 
 gem 'jquery-rails'
 gem 'simple_form'
@@ -50,5 +45,6 @@ gem 'jbuilder'
 # Deploy with Capistrano
 gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
+group :development do
+  gem 'pry-byebug'
+end
