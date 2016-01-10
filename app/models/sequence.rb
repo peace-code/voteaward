@@ -5,7 +5,7 @@ class Sequence
 
   def self.generate_id(object)
     @seq=where(:object => object).first || create(:object => object)
-    @seq.inc(:last_id,1)
+    @seq.inc(last_id: 1)
   end
 
   def self.get_last_id(object)

@@ -82,7 +82,7 @@ class User
     @twitter ||= Twitter::REST::Client.new do |config|
       config.consumer_key = Rails.configuration.twitter['client_id']
       config.consumer_secret = Rails.configuration.twitter['client_secret']
-      config.access_token = omniauth_credentials['token'],
+      config.access_token = omniauth_credentials['token']
       config.access_token_secret = omniauth_credentials['secret']
     end
   end

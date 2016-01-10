@@ -40,7 +40,7 @@ class CandidatesController < ApplicationController
   # POST /candidates
   # POST /candidates.json
   def create
-    @candidate = Candidate.new(params[:candidate])
+    @candidate = Candidate.new(candidate)
 
     respond_to do |format|
       if @candidate.save
@@ -59,7 +59,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.find(params[:id])
 
     respond_to do |format|
-      if @candidate.update_attributes(params[:candidate])
+      if @candidate.update_attributes(candidate_params)
         format.html { redirect_to candidates_url, notice: 'Candidate was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,5 +79,10 @@ class CandidatesController < ApplicationController
       format.html { redirect_to candidates_url }
       format.json { head :no_content }
     end
+  end
+
+private
+  def candidate_params
+    params.require(:candidate).permit()
   end
 end

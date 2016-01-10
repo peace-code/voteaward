@@ -5,7 +5,7 @@ class GiveupsController < ApplicationController
   end
 
   def create
-    @giveup = current_user.build_giveup(params[:giveup])
+    @giveup = current_user.build_giveup(giveup_params)
     if @giveup.save
       redirect_to giveups_url, notice: I18n.t('giveup.created')
     else
@@ -20,5 +20,10 @@ class GiveupsController < ApplicationController
     else
       redirect_to giveups_url
     end
+  end
+
+private
+  def giveup_params
+    params.require(:giveup).permit()
   end
 end

@@ -14,7 +14,7 @@ class VotesController < ApplicationController
       return nil
     end
 
-    @vote = current_user.votes.build(params[:vote])
+    @vote = current_user.votes.build(vote_params)
     if @vote.save
       message = I18n.t('vote.share', username: current_user.name, title: @vote.title, content: @vote.content, seq: @vote.seq)
       if current_user.omniauth_provider == :twitter
@@ -34,7 +34,7 @@ class VotesController < ApplicationController
 
   def update
     @vote = current_user.votes.find(params[:id])
-    if @vote.update_attributes(params[:vote])
+    if @vote.update_attributes(vote_params)
      redirect_to votes_url, notice: I18n.t('vote.updated')
     else
       render action: 'edit'
@@ -50,5 +50,10 @@ class VotesController < ApplicationController
     @vote = Vote.find(params[:id])
     @vote.inc(:likes, 1)
     @vote.event.inc(:likes, 1) unless @vote.event.blank?
+  end
+
+private
+  def vote_params
+    params.require(:vote).permit(:title, :content)
   end
 end

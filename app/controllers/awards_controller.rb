@@ -8,7 +8,7 @@ class AwardsController < ApplicationController
   end
 
   def create
-    @award = current_user.awards.build(params[:award])
+    @award = current_user.awards.build(award_params)
     if @award.save
       message = I18n.t('award.share', username: current_user.name, title: @award.title, content: @award.content, prize: @award.prize)
       if current_user.omniauth_provider == :twitter
@@ -44,5 +44,10 @@ class AwardsController < ApplicationController
       award.update_attributes(params[:award])
     end
     redirect_to award
+  end
+
+private
+  def award_params
+    params.require(:award).permit(:title, :content, :prize)
   end
 end

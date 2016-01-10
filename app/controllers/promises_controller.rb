@@ -8,7 +8,7 @@ class PromisesController < ApplicationController
   end
 
   def create
-    @promise = current_user.build_promise(params[:promise])
+    @promise = current_user.build_promise(promise_params)
     redirect_to promises_url
     # if @promise.save
     #   message = I18n.t('promise.share', username: current_user.name, reason: @promise.reason, seq: @promise.seq)
@@ -44,5 +44,10 @@ class PromisesController < ApplicationController
   def like
     @promise = Promise.find(params[:id])
     @promise.inc(:likes, 1)
+  end
+
+private
+  def promise_params
+    params.require(:promise).permit(:reason)
   end
 end

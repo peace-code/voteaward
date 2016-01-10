@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-#gem 'rails', '3.2.9'
-gem 'rails', '4.0'
+gem 'rails', '4.2.5'
 
 # db
 gem 'mongoid'
@@ -26,8 +25,8 @@ gem 'twitter'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
-gem "therubyracer"
-gem "less-rails"
+gem 'therubyracer', '0.12.0'
+gem 'less-rails'
 gem 'twitter-bootstrap-rails', '2.2.8'
 
 gem 'jquery-rails'
@@ -47,4 +46,5 @@ gem 'capistrano'
 
 group :development do
   gem 'pry-byebug'
+  gem 'spring'
 end

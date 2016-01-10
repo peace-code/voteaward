@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @commentable = find_commentable
-    @comment = @commentable.comments.build(params[:comment])
+    @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
 
     respond_to do |format|
@@ -26,12 +26,16 @@ class CommentsController < ApplicationController
     end
   end
 
-  private
+private
   def find_commentable
     params.each do |name, value|
       if name =~ /(.+)_id$/
         return $1.classify.constantize.find(value)
       end
     end
+  end
+
+  def comment_params
+    params.require(:comment).permit()
   end
 end
