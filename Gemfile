@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5'
 
 # db
-gem 'mongoid'
-gem 'mongoid-observers'
+gem 'mongoid', '4.0.2'
+gem 'mongoid-observers', '0.2.0'
 gem 'geocoder'
 
 # file upload
@@ -44,7 +44,9 @@ gem 'jbuilder'
 # Deploy with Capistrano
 gem 'capistrano'
 
-group :development do
+group :development, :test do
   gem 'pry-byebug'
   gem 'spring'
+  gem 'rails_12factor'
+  gem 'dotenv-rails'
 end

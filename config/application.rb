@@ -60,8 +60,8 @@ module Voteaward
     end
 
     # oauth
-    config.facebook = YAML.load_file("#{Rails.root.to_s}/config/credentials/facebook_credential.yml")[Rails.env]
-    config.twitter = YAML.load_file("#{Rails.root.to_s}/config/credentials/twitter_credential.yml")[Rails.env]
+    config.facebook = {"client_id" => ENV['FACEBOOK_KEY'], "client_secret" => ENV['FACEBOOK_SECRET'] }
+    config.twitter = {"client_id" => ENV['TWITTER_KEY'], "client_secret" => ENV['TWITTER_SECRET'] }
 
     # mongoid
     config.generators do |g|
