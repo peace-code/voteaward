@@ -9,9 +9,9 @@ gem 'geocoder'
 
 # file upload
 gem 'mini_magick'
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
-gem "fog"
+gem 'fog-aws', '0.12.0'
 
 # auth
 gem 'devise'
@@ -47,6 +47,9 @@ gem 'capistrano'
 group :development, :test do
   gem 'pry-byebug'
   gem 'spring'
-  gem 'rails_12factor'
   gem 'dotenv-rails'
+end
+
+group :production do
+  gem 'rails_12factor'
 end

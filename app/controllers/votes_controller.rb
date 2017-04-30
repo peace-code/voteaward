@@ -54,6 +54,6 @@ class VotesController < ApplicationController
 
 private
   def vote_params
-    params.require(:vote).permit(:title, :content)
+    params.require(:vote).permit(:image, :title, :content, :event)
   end
 end

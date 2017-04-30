@@ -71,7 +71,7 @@ production:
   sessions:
     # Defines the default session. (required)
     default:
-      hosts:
+      uri:
         - <%= ENV['MONGODB'] %>
       options:
         consistency: :strong
