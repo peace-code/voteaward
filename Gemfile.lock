@@ -331,5 +331,8 @@ DEPENDENCIES
   twitter-bootstrap-rails (= 2.2.8)
   uglifier
 
+RUBY VERSION
+   ruby 2.2.2p95
+
 BUNDLED WITH
    1.14.6

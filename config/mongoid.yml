@@ -67,11 +67,12 @@ test:
       options:
         consistency: :strong
 
+<% uri = URI.parse(ENV['MONGODB']) %>
 production:
   sessions:
-    # Defines the default session. (required)
     default:
-      uri:
-        - <%= ENV['MONGODB'] %>
-      options:
-        consistency: :strong
+      database: <%= uri.path.sub('/','') %>
+      username: <%= uri.user %>
+      password: <%= uri.password %>
+      hosts:
+        - <%= uri.host %>:<%= uri.port %>
