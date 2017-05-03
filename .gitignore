@@ -18,6 +18,7 @@
 # Ignore configs
 /config/credentials/*.yml
 .env
+/config/nginx.conf
 
 # Ignore DS_Store
 .DS_Store

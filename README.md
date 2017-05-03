@@ -23,3 +23,12 @@
     * AWS_KEY
     * AWS_SECRET
     * AWS_BUCKET
+
+
+### 배포
+
+* Capistrano
+  * SERVER
+  * REPO
+  * BRANCH
+  * DEPLOYER

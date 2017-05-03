@@ -1,14 +1,15 @@
 # config valid only for current version of Capistrano
 lock "3.8.1"
 
-server ENV['SERVER'], roles: [:web, :app, :db], primary: true  # port: 22
+require 'dotenv/load'
+
+server "#{ENV['SERVER']}", roles: [:web, :app, :db], primary: true  # port: 22
 
 set :application, "voteaward"
 set :domain, "voteaward.com"
-set :repo_url,  ENV['REPO']
-set :scm, :git
-set :branch, ENV['BRANCH']
-set :user, ENV['DEPLOYER']
+set :repo_url,  "#{ENV['REPO']}"
+set :branch, "#{ENV['BRANCH']}"
+set :user, "#{ENV['DEPLOYER']}"
 set :user_sudo, false
 
 set :rbenv_type, :user
