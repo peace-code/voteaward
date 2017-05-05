@@ -62,10 +62,11 @@
               <% end %>
             </div>
             <ul class="nav nav-menu">
-              <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소(#{Sequence.get_last_id('promise')}명)", promises_path %></li>
-              <li class='<%= 'active' if params['controller'] == 'awards' %>'><%= link_to "투표어워드(#{Award.all.count}개)", awards_path %></li>
-              <li class='<%= 'active' if params['controller'] == 'votes' %>'><%= link_to "투표했소(#{Vote.all.count}개)", votes_path %></li>
-              <li class='<%= 'active' if params['controller'] == 'events' %>'><%= link_to "투표소이벤트(#{Event.all.count}개)", events_path %></li>
+              <li><%= link_to "2012년 보기", y2012_root_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소(#{current_election.promises.count}명)", promises_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'awards' %>'><%= link_to "투표어워드(#{current_election.awards.count}개)", awards_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'votes' %>'><%= link_to "투표했소(#{current_election.votes.count}개)", votes_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'events' %>'><%= link_to "투표소이벤트(#{current_election.events.count}개)", events_path %></li>
               <li class='<%= 'active' if params['action'] == 'info' %>'><%= link_to raw("모르겠소"), info_path %></li>
             </ul>
             <ul class='nav pull-right'>
@@ -98,18 +99,7 @@
       </div>
     </div>
 
-    <% if params[:controller] != 'pages' %>
-      <div class='container' style='margin-top:4em;'>
-        <% if user_signed_in? %>
-          <div class='alert alert-success'>
-            <i class='icon-user'></i> 2017 투표 어워드가 발급되었습니다!
-            <%= link_to '2017 투표어워드 확인하기', me_users_path %>
-          </div>
-        <% end %>
-      </div>
-    <% else %>
-      <div class='container' style='margin-top:4em;' />
-    <% end %>
+    <div class='container' style='margin-top:4em;' />
 
     <div class='container'>
     <%= yield %>
