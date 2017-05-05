@@ -3,6 +3,11 @@ lock "3.8.1"
 
 require 'dotenv/load'
 
+puts "#{ENV['SERVER']}"
+puts "#{ENV['REPO']}"
+puts "#{ENV['BRANCH']}"
+puts "#{ENV['DEPLOYER']}"
+
 server "#{ENV['SERVER']}", roles: [:web, :app, :db], primary: true  # port: 22
 
 set :application, "voteaward"
@@ -42,6 +47,12 @@ namespace :puma do
     end
   end
 
+  task :link_nginxconf do
+    on roles(:app) do
+      execute "sudo ln -nfs #{current_path}/conf/nginx.conf /etc/nginx/sites-enabled/voteaward"
+    end
+  end
+
   before :start, :make_dirs
 end
 
@@ -49,12 +60,21 @@ namespace :deploy do
   desc "Make sure local git is in sync with remote."
   task :check_revision do
     on roles(:app) do
-      unless `git rev-parse HEAD` == `git rev-parse origin/master`
+      unless `git rev-parse HEAD` == `git rev-parse origin/#{fetch(:branch)}`
         puts "WARNING: HEAD is not the same as origin/master"
         puts "Run `git push` to sync changes."
         exit
       end
     end
+  end
+
+  desc "Copy .env file"
+  task :copy do
+     on roles(:all) do |host|
+        %w[ .env config/mongoid.yml config/nginx.conf ].each do |f|
+          upload! f, "#{current_path}/#{f}"
+        end
+     end
   end
 
   desc 'Initial Deploy'
@@ -72,6 +92,8 @@ namespace :deploy do
     end
   end
 
+  before :compile_assets, 'deploy:symlink:release'
+  after  'deploy:symlink:release', :copy
   before :starting,     :check_revision
   after  :finishing,    :compile_assets
   after  :finishing,    :cleanup
