@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
   def index
-    @votes = Vote.all
-    @events = Event.all
+    @votes = current_election.votes
+    @events = current_election.events
   end
 
   def new
@@ -14,14 +14,14 @@ class VotesController < ApplicationController
       return nil
     end
 
-    @vote = current_user.votes.build(vote_params)
+    @vote = Vote.new(vote_params.merge({user: current_user, election: current_election}))
     if @vote.save
       message = I18n.t('vote.share', username: current_user.name, title: @vote.title, content: @vote.content, seq: @vote.seq)
-      if current_user.omniauth_provider == :twitter
-        current_user.twitter.update([vote_url(@vote), message, I18n.t('g.hashtag')].join(' '))
-      else
-        current_user.facebook.put_wall_post(message, {name: I18n.t('g.title'), link: vote_url(@vote)})
-      end
+      # if current_user.omniauth_provider == :twitter
+      #   current_user.twitter.update([vote_url(@vote), message, I18n.t('g.hashtag')].join(' '))
+      # else
+      #   current_user.facebook.put_wall_post(message, {name: I18n.t('g.title'), link: vote_url(@vote)})
+      # end
       redirect_to votes_url, notice: I18n.t('vote.created')
     else
       render action: 'new'
@@ -44,6 +44,7 @@ class VotesController < ApplicationController
   def show
     @vote = Vote.find(params[:id])
     @vote.comments.build
+    @promises = @vote.user.promises
   end
 
   def like

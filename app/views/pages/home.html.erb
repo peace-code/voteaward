@@ -3,13 +3,13 @@
     <div class="container" style='position:relative;'>
       <%= image_tag 'main_img.png', class: 'main_img' %>
       <div class="main_contents">
-        <div class="count_bg"><% ('%05i' % Promise.all.count).each_char do |c| %><span><%= c %></span><% end %></div>
+        <div class="count_bg"><% ('%05i' % @promises_count).each_char do |c| %><span><%= c %></span><% end %></div>
         <label class="count_label">
           명이 투표를 약속했습니다
         </label>
         <div class="graph_bg">
         </div>
-        <div class="graph_value">
+        <div class="graph_value" style="width:<%= @promises_count * 0.1 %>%">
         </div>
       </div>
       <div class="intro_box">
@@ -32,17 +32,17 @@
           <p>이렇게 우리가 주고 받는 어워드가 투표율을 수직 상승시킬까요?</p>
           <p>아니면 투표 약속을 빌미로 새로운 인연을 만나게 될까요?</p>
           <p><%= link_to '투표하겠소?', promises_path, class: 'btn btn-large btn-block btn-danger' %></p>
-          <p style='text-align:right;'>현재 : <%= content_tag :b, Promise.all.count %>명 약속 / <%= content_tag :b, Award.all.count %>개의 어워드</p>
+          <p style='text-align:right;'>현재 : <%= content_tag :b, @promises_count %>명 약속 / <%= content_tag :b, @awards_count %>개의 어워드</p>
         </div>
       </div>
       <div class='span4'>
         <div class='well'>
           <h4>나는 투표했소!</h4>
-          <p>2012년 12월 19일</p>
+          <p>20017년 5월 9일</p>
           <p>여러분의 자랑스런 투표 인증을 평생 간직하세요. 이번의 투표 약속, 앞으로의 투표 약속과 인증을 모두 함께 오랫동안 보관해 드리겠습니다.</p>
-          <p>곧 공개하겠습니다.</p>
+          <p><%= link_to '지난 2012년 투표인증 보러가기', y2012_promises_path %></p>
           <p><%= link_to '나는 투표했소!', votes_path, class: 'btn btn-large btn-block btn-info' %></p>
-          <p style='text-align:right;'>현재 : <%= content_tag :b, Vote.all.count %>명 인증 / <%= content_tag :b, Event.all.count %>개의 투표소 이벤트</p>
+          <p style='text-align:right;'>현재 : <%= content_tag :b, @votes_count %>명 인증 / <%= content_tag :b, @events_count %>개의 투표소 이벤트</p>
         </div>
       </div>
       <div class='span4'>

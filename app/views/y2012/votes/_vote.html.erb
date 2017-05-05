@@ -1,7 +1,7 @@
 <li class='span3 masonry_item vote-<%=vote.id %>' style='margin-bottom:1em;'>
   <div class="thumbnail" style='padding:10px;'>
     <% unless vote.image.blank? %>
-      <%= link_to vote do %><%= image_tag vote.image, style: 'width: 100%;' %><% end %>
+      <%= link_to y2012_vote_path(vote) do %><%= image_tag vote.image, style: 'width: 100%;' %><% end %>
     <% end %>
     <h4><span style='font-size:1.2em;font-style:italic;'><%= number_with_delimiter vote.seq %></span> <%= link_to vote.title, vote %></h4>
     <p class='muted'><%= link_to raw("<i class='icon-#{vote.user.omniauth_provider}'></i> #{vote.user.name}"), vote.user %>

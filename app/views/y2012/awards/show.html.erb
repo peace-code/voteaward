@@ -54,9 +54,9 @@
               <p><%= @award.address %></p>
             <% end %>
 
-            <% unless @award.user.promise.blank? %>
+            <% if @promises.present? %>
               <h4>만든 사람이 한 투표 약속</h4>
-              <p><%= @award.user.promise.reason %></p>
+              <p><%= @promises.first.reason %></p>
             <% end %>
           </div>
         </div>

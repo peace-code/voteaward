@@ -2,7 +2,7 @@
   <div class='container'>
     <div class='page-header'>
       <h1>투표하겠소
-        <small>총 <%= Promise.all.count %>명이 투표 약속을 하셨습니다.</small>
+        <small>총 <%= @promises.count %>명이 투표 약속을 하셨습니다.</small>
       </h1>
     </div>
 
@@ -10,8 +10,12 @@
 
     <div class='tabbable'>
       <ul class="nav nav-tabs">
-        <li><a href="#tab1" data-toggle='tab' onclick='show_all();'><i class="icon-user"></i><%= Promise.all.count %>명의 투표 약속</a></li>
-        <li class="active"><a href="#tab2" data-toggle='tab' onclick='show_selected();'><i class='icon-gift'></i>당선되었어요!</a></li>
+        <li class="active">
+          <a href="#tab1" data-toggle='tab' onclick='show_all();'>
+            <i class="icon-user"></i><%= @promises.count %>명의 투표 약속
+          </a>
+        </li>
+        <li class="active"><a href="#tab2" data-toggle='tab' onclick='show_selected();'><i class='icon-gift'></i>당선되었어요!(작업중)</a></li>
       </ul>
       <div class='tab-content'>
         <div class='row masonry_container'>

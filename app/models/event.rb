@@ -6,6 +6,7 @@ class Event
   # association
   belongs_to :user
   has_many :votes
+  belongs_to :election
 
   # fields
   field :title

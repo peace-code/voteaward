@@ -1,4 +1,4 @@
-class Y2012::VotesController < Y2012::ApplicationController
+class Y2012::VotesController < Y2012::Y2012Controller
   def index
     @votes = Vote.all
     @events = Event.all
@@ -44,6 +44,7 @@ class Y2012::VotesController < Y2012::ApplicationController
   def show
     @vote = Vote.find(params[:id])
     @vote.comments.build
+    @promises = @vote.user.promises
   end
 
   def like

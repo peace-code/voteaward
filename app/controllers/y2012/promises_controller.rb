@@ -1,6 +1,8 @@
-class Y2012::PromisesController < Y2012::ApplicationController
+class Y2012::PromisesController < Y2012::Y2012Controller
+  before_action :current_candidates
+  before_action :current_promises, only: [:index]
+
   def index
-    @promises = Promise.all
   end
 
   def new
@@ -48,6 +50,14 @@ class Y2012::PromisesController < Y2012::ApplicationController
 
 private
   def promise_params
-    params.require(:promise).permit(:reason)
+    params.require(:promise).permit(:reason, :area, :sex, :age, :candidate_id, :show_candidate)
+  end
+
+  def current_candidates
+    @candidates = current_election.candidates
+  end
+
+  def current_promises
+    @promises = current_election.promises
   end
 end

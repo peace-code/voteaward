@@ -2,13 +2,13 @@
   <div class='container'>
     <div class='page-header'>
       <h1>투표 어워드
-        <small>총 <%= Award.all.count%>개의 어워드</small>
+        <small>총 <%= @awards.count%>개의 어워드</small>
       </h1>
     </div>
 
-    <% if user_signed_in? && current_user.awards.present? %>
+    <% if user_signed_in? && @awards.where(user: current_user).present? %>
       <div class='alert alert-info'>
-        <%- award = current_user.awards.first -%>
+        <%- award = @awards.where(user: current_user).first -%>
         '<%= content_tag :b, award.title %>' 어워드의 당첨자를 정해주세요!
         <%= link_to edit_award_path(award), class: 'btn btn-info' do %>
           <i class="icon-gift"></i> 당첨자 지정하기
@@ -20,7 +20,7 @@
 
     <div class='tabbable'>
       <ul class="nav nav-tabs">
-        <li><a href="#tab1" data-toggle='tab' onclick='show_all()'><i class="icon-user"></i><%= Award.all.count %>개의 투표 어워드</a></li>
+        <li><a href="#tab1" data-toggle='tab' onclick='show_all()'><i class="icon-user"></i><%= @awards.count %>개의 투표 어워드</a></li>
         <li class="active"><a href="#tab3" data-toggle='tab' onclick='show_selected()'><i class='icon-gift'></i>당선되었어요!</a></li>
         <li class='disabled'><a href="#tab2" data-toggle='tab'><i class='icon-wrench'></i>지도로 어워드 보기</a></li>
       </ul>

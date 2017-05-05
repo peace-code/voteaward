@@ -3,7 +3,7 @@ class User
   include Mongoid::Timestamps
 
   # association
-  has_one :promise
+  has_many :promises
   has_one :giveup
   has_many :votes
   has_many :awards

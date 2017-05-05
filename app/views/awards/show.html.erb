@@ -16,10 +16,10 @@
         <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-502c5e680ade902a"></script>
         <!-- AddThis Button END -->
         <h4 style='margin-bottom:3em;line-height:150%;'><%= simple_format @award.content %></h4>
-        <% if @award.promises.present? %>
+        <% if @award.promises.where(election: current_election).present? %>
           <div class='page-header'><h3>수상자</h3></div>
           <div class='row clearfix'>
-            <%= render @award.promises %>
+            <%= render @award.promises.where(election: current_election) %>
           </div>
           <hr>
         <% end %>
@@ -54,9 +54,9 @@
               <p><%= @award.address %></p>
             <% end %>
 
-            <% unless @award.user.promise.blank? %>
+            <% unless @award.user.promises.blank? %>
               <h4>만든 사람이 한 투표 약속</h4>
-              <p><%= @award.user.promise.reason %></p>
+              <p><%= @award.user.promises.where(election: current_election).first.reason %></p>
             <% end %>
           </div>
         </div>

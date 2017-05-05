@@ -40,7 +40,7 @@ class CandidatesController < ApplicationController
   # POST /candidates
   # POST /candidates.json
   def create
-    @candidate = Candidate.new(candidate)
+    @candidate = Candidate.new(candidate_params)
 
     respond_to do |format|
       if @candidate.save
@@ -83,6 +83,6 @@ class CandidatesController < ApplicationController
 
 private
   def candidate_params
-    params.require(:candidate).permit()
+    params.require(:candidate).permit(:name, :party, :number, :election_id)
   end
 end

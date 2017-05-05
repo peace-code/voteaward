@@ -54,9 +54,9 @@
             <% unless @vote.coordinates.blank? %><p><%= image_tag "http://maps.google.com/maps/api/staticmap?zoom=15&size=248x248&maptype=roadmap
           &markers=color:blue|label:S%7C#{@vote.coordinates['latitude']},#{@vote.coordinates['longitude']}&sensor=false" %></p><% end %>
 
-            <% unless @vote.user.promise.blank? %>
-              <h4><%= @vote.user.promise.seq %>번째로 투표 약속</h4>
-              <p><%= @vote.user.promise.reason %></p>
+            <% if @promises.present? %>
+              <h4><%= @promises.first.seq %>번째로 투표 약속</h4>
+              <p><%= @promises.first.reason %></p>
             <% end %>
           </div>
         </div>

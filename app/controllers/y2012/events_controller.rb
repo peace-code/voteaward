@@ -1,4 +1,4 @@
-class Y2012::EventsController < Y2012::ApplicationController
+class Y2012::EventsController < Y2012::Y2012Controller
   def index
     @events = Event.all
   end

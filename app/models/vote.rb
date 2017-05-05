@@ -6,6 +6,7 @@ class Vote
   belongs_to :user
   belongs_to :event
   has_many :comments, as: :commentable
+  belongs_to :election
 
   # fields
   field :seq, type: Integer
@@ -29,7 +30,7 @@ class Vote
   protected
 
   def assign_id
-    self.seq = Sequence.generate_id(:vote)
+    self.seq = Sequence.generate_id(election, :vote)
   end
 
   def set_location
