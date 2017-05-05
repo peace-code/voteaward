@@ -1,0 +1,38 @@
+<div class='span4 masonry_item promise-<%= promise.id %> <%= "selected" if promise.awards.present? %>'>
+  <div class='infobox'>
+    <div class='media' style='margin-bottom:5px;'>
+      <h4><span style='font-size:2.0em;font-style:italic;'><%= promise.seq %></span> <i class='icon-<%= promise.user.omniauth_provider %>'></i> <%= link_to "#{promise.user.name}", promise.user %></h4>
+      <a class='pull-left'>
+        <%= image_tag promise.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+      </a>
+      <div class='media-body'>
+        <p class='muted' style='font-size:0.85em'><%= raw "<b>#{promise.candidate.name}</b>을(를) 지지하는" if ( ! promise.candidate.blank? && promise.show_candidate == true ) %> <%= content_tag :b, promise.area %>의 <%= content_tag :b, promise.age %></p>
+        <p><%= promise.reason %></p>
+        <%= link_to '수정', edit_promise_path(promise) if user_signed_in? && promise.user == current_user %>
+        <%= link_to like_promise_path(promise), method: :post, remote: true, class: '' do %>
+          좋아요! <i class='icon-thumbs-up'></i> <%= content_tag :span, "#{promise.likes}", class: 'likes', style: 'font-weight:bold;' %>
+        <% end %>
+      </div>
+
+      <% if promise.awards.present? && @award.blank? %>
+        <% promise.awards.each do |award| %>
+          <hr>
+          <h4><i class='icon icon-gift'></i> <%= link_to "#{award.title} 어워드", award %>
+            <small><i class='icon-<%= award.user.omniauth_provider %>'></i> <%= link_to award.user.name, award.user %>
+            <i class='icon-comment'></i> <%= link_to number_with_delimiter(award.comments.count), award %></small></h4>
+          <div class='media'>
+            <a class='pull-left'>
+              <%= image_tag award.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+            </a>
+            <div class='media-body'>
+              <p><%= award.content %></p>
+              <p>상품 : <%= award.prize %></p>
+              <%= link_to('destroy', award, method: :delete, confirm: 'are you sure?') if (user_signed_in? && current_user.admin?) %>
+              <%= link_to '자세히 보기', award %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -15,7 +15,7 @@
       <meta property="og:description" content="5년에 한번 뿐인 대통령 선거를 신나는 놀이터로 만들어 봅시다" />
     <% end %>
 
-    <title><%= content_for?(:title) ? yield(:title) : "2017 투표 대잔치" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "2012 투표 대잔치" %></title>
     <%= csrf_meta_tags %>
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
@@ -23,7 +23,7 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
     <![endif]-->
 
-    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= stylesheet_link_tag "y2012", :media => "all" %>
 
     <!-- For third-generation iPad with high-resolution Retina display: -->
     <!-- Size should be 144 x 144 pixels -->
@@ -57,16 +57,16 @@
           </a>
           <div class="container nav-collapse">
             <div class="logo">
-              <%= link_to root_path do %>
+              <%= link_to y2012_root_path do %>
                 <%= image_tag 'logo.png' %>
               <% end %>
             </div>
             <ul class="nav nav-menu">
-              <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소(#{Sequence.get_last_id('promise')}명)", promises_path %></li>
-              <li class='<%= 'active' if params['controller'] == 'awards' %>'><%= link_to "투표어워드(#{Award.all.count}개)", awards_path %></li>
-              <li class='<%= 'active' if params['controller'] == 'votes' %>'><%= link_to "투표했소(#{Vote.all.count}개)", votes_path %></li>
-              <li class='<%= 'active' if params['controller'] == 'events' %>'><%= link_to "투표소이벤트(#{Event.all.count}개)", events_path %></li>
-              <li class='<%= 'active' if params['action'] == 'info' %>'><%= link_to raw("모르겠소"), info_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소(#{Sequence.get_last_id('promise')}명)", y2012_promises_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'awards' %>'><%= link_to "투표어워드(#{Award.all.count}개)", y2012_awards_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'votes' %>'><%= link_to "투표했소(#{Vote.all.count}개)", y2012_votes_path %></li>
+              <li class='<%= 'active' if params['controller'] == 'events' %>'><%= link_to "투표소이벤트(#{Event.all.count}개)", y2012_events_path %></li>
+              <li class='<%= 'active' if params['action'] == 'info' %>'><%= link_to raw("모르겠소"), y2012_info_path %></li>
             </ul>
             <ul class='nav pull-right'>
               <% if user_signed_in? %>
@@ -102,8 +102,8 @@
       <div class='container' style='margin-top:4em;'>
         <% if user_signed_in? %>
           <div class='alert alert-success'>
-            <i class='icon-user'></i> 2017 투표 어워드가 발급되었습니다!
-            <%= link_to '2017 투표어워드 확인하기', me_users_path %>
+            <i class='icon-user'></i> 2012 투표 어워드가 발급되었습니다!
+            <%= link_to '2012 투표어워드 확인하기', me_users_path %>
           </div>
         <% end %>
       </div>
@@ -121,7 +121,7 @@
           <div class='span6'>
             <h5 style='margin-top:0'><u>투표 대잔치</u>는 대한민국의 선거를 재미있게 만들려는 자발적 모임입니다.</h5>
             <ul>
-              <li><%= link_to '응원 게시판', discuss_path %></li>
+              <li><%= link_to '응원 게시판', y2012_discuss_path %></li>
               <li><a href='http://www.facebook.com/groups/voteaward/'>페이스북 그룹</a></li>
               <li><a href='https://groups.google.com/forum/?fromgroups#!forum/voteaward'>구글 그룹스</a></li>
               <li><a href='http://github.com/peace-code/voteaward'>깃허브</a></li>

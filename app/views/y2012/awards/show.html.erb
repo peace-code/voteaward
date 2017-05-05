@@ -1,0 +1,66 @@
+<section id='award'>
+  <div class='container'>
+    <div class='row'>
+      <div class='span8'>
+        <div class='page-header'>
+          <h1><i class='icon icon-gift'></i> <%= "#{@award.title}" %> <small>어워드</small></h1>
+        </div>
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style ">
+          <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+          <a class="addthis_button_tweet"></a>
+          <a class="addthis_button_pinterest_pinit"></a>
+          <a class="addthis_counter addthis_pill_style"></a>
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-502c5e680ade902a"></script>
+        <!-- AddThis Button END -->
+        <h4 style='margin-bottom:3em;line-height:150%;'><%= simple_format @award.content %></h4>
+        <% if @award.promises.present? %>
+          <div class='page-header'><h3>수상자</h3></div>
+          <div class='row clearfix'>
+            <%= render @award.promises %>
+          </div>
+          <hr>
+        <% end %>
+        <div class='well'>
+          <%= render @award.comments %>
+        </div>
+      </div><!-- span8 -->
+      <div class='span4' style='padding-top:1em;min-height:300px;'>
+        <div class='well'>
+          <h4>만든 사람</h4>
+          <div class='media'>
+            <a class='pull-left'>
+              <%= image_tag @award.user.profile_image, class: 'media-object', style: 'width: 50px;' %>
+            </a>
+            <div class='media-body'>
+              <h4 class='media-heading'>
+                <i class='icon-<%= @award.user.omniauth_provider %>'></i> <%= link_to @award.user.name, @award.user %>
+              </h4>
+              <p><%= link_to @award.user.omniauth_url, @award.user.omniauth_url %></p>
+            </div>
+
+            <h4>상품</h4>
+            <p><%= @award.prize %></p>
+
+            <% unless @award.url.blank? %>
+              <h4>URL</h4>
+              <p><%= link_to @award.url, @award.url %></p>
+            <% end %>
+
+            <% unless @award.address.blank? %>
+              <h4>주소</h4>
+              <p><%= @award.address %></p>
+            <% end %>
+
+            <% unless @award.user.promise.blank? %>
+              <h4>만든 사람이 한 투표 약속</h4>
+              <p><%= @award.user.promise.reason %></p>
+            <% end %>
+          </div>
+        </div>
+      </div><!-- span4 -->
+    </div>
+  </div>
+</section>

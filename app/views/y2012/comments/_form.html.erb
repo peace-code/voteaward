@@ -1,0 +1,4 @@
+<%= simple_form_for [comment.commentable, comment] do |f| %>
+  <%= f.input :content, label: '댓글', as: :text, input_html: { class: 'span7', rows: 3 } %>
+  <%= f.button :submit, '등록', :class => 'btn-primary' %>
+<% end %>

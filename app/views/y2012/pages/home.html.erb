@@ -1,7 +1,7 @@
 <section id='about'>
   <div class="jumbotron masthead top_img" >
     <div class="container" style='position:relative;'>
-      <%= image_tag 'main_img.png', class: 'main_img' %>
+      <%= image_tag 'y2012_main_img.png', class: 'main_img' %>
       <div class="main_contents">
         <div class="count_bg"><% ('%05i' % Promise.all.count).each_char do |c| %><span><%= c %></span><% end %></div>
         <label class="count_label">
@@ -13,9 +13,9 @@
         </div>
       </div>
       <div class="intro_box">
-        <label class="intro">2017년 투표대잔치</label>
-        우리가 뽑는 대통령 선거. <br />
-        우리의 삶을 결정하는 이벤트인데, 우리가 할 수 있는 거라곤 지켜보다가 투표하는 것 뿐.
+        <label class="intro">2012년 투표대잔치</label>
+        5년에 한번 뿐인 대통령 선거. <br />
+        나라의 운을 결정하는 이벤트인데, 우리가 할 수 있는 거라곤 지켜보다가 투표하는 것 뿐.
         뭔가 아쉽지 않나요? 그래서 준비했습니다!
       </div>
       <div class="cow">
@@ -31,7 +31,7 @@
           <p>투표 약속을 하고, 약속한 사람들에게 내가 만든 어워드를 부여한다면?</p>
           <p>이렇게 우리가 주고 받는 어워드가 투표율을 수직 상승시킬까요?</p>
           <p>아니면 투표 약속을 빌미로 새로운 인연을 만나게 될까요?</p>
-          <p><%= link_to '투표하겠소?', promises_path, class: 'btn btn-large btn-block btn-danger' %></p>
+          <p><%= link_to '투표하겠소?', y2012_promises_path, class: 'btn btn-large btn-block btn-danger' %></p>
           <p style='text-align:right;'>현재 : <%= content_tag :b, Promise.all.count %>명 약속 / <%= content_tag :b, Award.all.count %>개의 어워드</p>
         </div>
       </div>
@@ -41,7 +41,7 @@
           <p>2012년 12월 19일</p>
           <p>여러분의 자랑스런 투표 인증을 평생 간직하세요. 이번의 투표 약속, 앞으로의 투표 약속과 인증을 모두 함께 오랫동안 보관해 드리겠습니다.</p>
           <p>곧 공개하겠습니다.</p>
-          <p><%= link_to '나는 투표했소!', votes_path, class: 'btn btn-large btn-block btn-info' %></p>
+          <p><%= link_to '나는 투표했소!', y2012_votes_path, class: 'btn btn-large btn-block btn-info' %></p>
           <p style='text-align:right;'>현재 : <%= content_tag :b, Vote.all.count %>명 인증 / <%= content_tag :b, Event.all.count %>개의 투표소 이벤트</p>
         </div>
       </div>
@@ -52,14 +52,14 @@
           <p>소중한 한표를 행사하고 싶은데 누구를 찍을지 아직 못 정하셨나요?</p>
           <p>도대체 투표는 어떻게 하는지 헷갈리시나요?</p>
           <p>그래서 모아보았습니다</p>
-          <p><%= link_to '나는 모르겠소!', info_path, class: 'btn btn-large btn-block btn-warning' %></p>
+          <p><%= link_to '나는 모르겠소!', y2012_info_path, class: 'btn btn-large btn-block btn-warning' %></p>
         </div>
       </div>
     </div><!-- row -->
     <div class='alert-danger alert'>
       <h3>"투표 대잔치 배너"를 블로그나 사이트에 달아주세요!</h3>
       <p>선거기간 동안은 투표 독려 배너가, 투표일에는 투표 인증을 요청하는 배너가 됩니다.
-      <%= link_to '배너 달기', banner_path, class: 'btn btn-danger' %>
+      <%= link_to '배너 달기', y2012_banner_path, class: 'btn btn-danger' %>
       </p>
     </div>
   <div>

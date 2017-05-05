@@ -1,0 +1,20 @@
+<% if comment.new_record? %>
+  <% if user_signed_in? %>
+    <div class='media'>
+      <%= render 'comments/form', comment: comment %>
+    </div>
+  <% end %>
+<% else %>
+  <div class='media'>
+    <a class="pull-left" href="#">
+      <%= image_tag comment.user.profile_image, class: 'media-object', width: 64 %>
+    </a>
+    <div class="media-body">
+      <h5 class="media-heading"><%= link_to raw("<i class='icon-#{comment.user.omniauth_provider}'></i> #{comment.user.name}"), comment.user %></h5>
+      <%= simple_format comment.content %>
+      <% if user_signed_in? && current_user == comment.user %>
+        <p><%= link_to '삭제', comment, method: :delete, confirm: '지우시겠습니까?' %></p>
+      <% end %>
+    </div>
+  </div>
+<% end %>

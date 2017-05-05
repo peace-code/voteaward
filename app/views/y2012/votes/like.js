@@ -1,0 +1,1 @@
+$('.vote-<%= @vote.id %>').find('span.likes').html("(<%= @vote.likes %>)");

@@ -1,0 +1,20 @@
+<style>
+  label { width: 150px; margin-right: 3em; }
+</style>
+<section id='edit_award'>
+  <div class="container">
+    <div class='page-header'>
+      <h2>'<%= current_user.name %> 어워드' 수상자 정하기</h2>
+    </div>
+    <%= simple_form_for @award do |f| %>
+      <%= f.error_notification %>
+      <div class="form-inputs">
+        <% promises_array = Promise.all.collect{|p| ["#{p.seq} - #{p.user.name}", p.id] } %>
+        <%= f.association :promises, as: :check_boxes, label: '수상자', collection: promises_array, item_wrapper_class: 'inline' %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit %>
+      </div>
+    <% end %>
+  </div>
+</section>
