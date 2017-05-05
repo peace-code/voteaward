@@ -41,6 +41,7 @@ gem 'puma'
 group :development, :test do
   gem 'pry-byebug'
   gem 'spring'
+  gem 'railroady'
 end
 
 group :development do

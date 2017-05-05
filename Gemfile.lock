@@ -224,6 +224,7 @@ GEM
     rack (1.6.5)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.5.2)
     rails (4.2.8)
       actionmailer (= 4.2.8)
       actionpack (= 4.2.8)
@@ -347,6 +348,7 @@ DEPENDENCIES
   omniauth-twitter
   pry-byebug
   puma
+  railroady
   rails (= 4.2.8)
   rails_12factor
   sass-rails
