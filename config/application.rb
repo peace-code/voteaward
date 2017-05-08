@@ -60,8 +60,16 @@ module Voteaward
     end
 
     # oauth
-    config.facebook = {"client_id" => ENV['FACEBOOK_KEY'], "client_secret" => ENV['FACEBOOK_SECRET'] }
-    config.twitter = {"client_id" => ENV['TWITTER_KEY'], "client_secret" => ENV['TWITTER_SECRET'] }
+    if Rails.env.development?
+      config.facebook = {"client_id" => ENV['FACEBOOK_KEY_DEV'], "client_secret" => ENV['FACEBOOK_SECRET_DEV'] }
+      config.twitter = {"client_id" => ENV['TWITTER_KEY_DEV'], "client_secret" => ENV['TWITTER_SECRET_DEV'] }
+    elsif Rails.env.test?
+      config.facebook = {"client_id" => ENV['FACEBOOK_KEY_DEV'], "client_secret" => ENV['FACEBOOK_SECRET_DEV'] }
+      config.twitter = {"client_id" => ENV['TWITTER_KEY_DEV'], "client_secret" => ENV['TWITTER_SECRET_DEV'] }
+    else Rails.env.production?
+      config.facebook = {"client_id" => ENV['FACEBOOK_KEY'], "client_secret" => ENV['FACEBOOK_SECRET'] }
+      config.twitter = {"client_id" => ENV['TWITTER_KEY'], "client_secret" => ENV['TWITTER_SECRET'] }
+    end
 
     # mongoid
     config.generators do |g|
