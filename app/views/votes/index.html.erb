@@ -6,6 +6,18 @@
 
     <%= render 'encourage_box' %>
 
+    <% if user_signed_in? %>
+      <% if Vote.where(user: current_user, election: current_election).count < 1 %>
+        <div class='well'>
+          간단히 투표 인증을 남길 수 있습니다. <%= link_to '투표인증하기', new_vote_path, class: 'btn btn-primary' %>
+        </div>
+      <% else %>
+        <div class='alert alert-success'>
+          <%= content_tag :b, Vote.where(user: current_user, election: current_election).first.seq %>번째로 투표 인증을 남겼습니다.
+        </div>
+      <% end %>
+    <% end %>
+
     <div class='tabbable'>
       <ul class="nav nav-tabs">
         <li class="active">
