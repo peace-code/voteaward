@@ -35,6 +35,8 @@ gem 'simple_form'
 
 gem 'jbuilder'
 
+gem 'jquery-countdown-rails'
+
 gem 'dotenv-rails'
 gem 'puma'
 

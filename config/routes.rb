@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   match 'info' => 'pages#info', as: 'info', via: [:get, :post]
   match 'discuss' => 'pages#discuss', as: 'discuss', via: [:get, :post]
   match 'banner' => 'pages#banner', as: 'banner', via: [:get, :post]
+  match 'count' => 'pages#count', as: 'count', via: [:get, :post]
 
   namespace :y2012, path: '2012' do
     resources :promises, :awards, :votes, shallow: true do
@@ -36,5 +37,6 @@ Rails.application.routes.draw do
     root to: 'pages#home'
   end
 
-  root to: 'pages#home'
+  # root to: 'pages#home'
+  root to: 'pages#count'
 end
