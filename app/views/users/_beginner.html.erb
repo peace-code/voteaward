@@ -1,0 +1,34 @@
+<div class='page-header'>
+  <h3><i class='icon-user'></i> <%= @user.name %>님의 투표어워드
+    <small><%= link_to raw("<i class='icon-#{@user.omniauth_provider}'></i> #{@user.omniauth_url}"), @user.omniauth_url %></small>
+  </h3>
+</div>
+<div row>
+  <div class="span3">
+    <div class="badges">
+      <center>
+        <%= image_tag 'badge1_off.png' %>
+        <h4>투표약속에 참여해보세요</h4>
+        <p>투표하겠소를 통해 투표약속을 해보세요</p>
+      </center>
+    </div>
+  </div>
+  <div class="span3">
+    <div class="badges">
+      <center>
+        <%= image_tag 'badge2_off.png' %>
+        <h4>투표 어워드를 만들어 보세요</h4>
+        <p>투표어워드를 만들어 투표독려에 참여해보세요</p>
+      </center>
+    </div>
+  </div>
+  <div class="span3">
+    <div class="badges">
+      <center>
+        <%= image_tag 'badge3_off.png' %>
+        <h4>투표했소에 참여해보세요</h4>
+        <p>투표인증을 하고 이벤트에도 참여해보세요</p>
+      </center>
+    </div>
+  </div>
+</div>

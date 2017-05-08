@@ -63,6 +63,7 @@
               <% end %>
             </div>
             <ul class="nav nav-menu">
+              <li><%= link_to "2017년 참여", root_path %></li>
               <li class='<%= 'active' if params['controller'] == 'promises' %>'><%= link_to "투표하겠소(#{past_election.promises.count}명)", y2012_promises_path %></li>
               <li class='<%= 'active' if params['controller'] == 'awards' %>'><%= link_to "투표어워드(#{past_election.awards.count}개)", y2012_awards_path %></li>
               <li class='<%= 'active' if params['controller'] == 'votes' %>'><%= link_to "투표했소(#{past_election.votes.count}개)", y2012_votes_path %></li>
