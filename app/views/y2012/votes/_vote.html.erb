@@ -1,0 +1,17 @@
+<li class='span3 masonry_item vote-<%=vote.id %>' style='margin-bottom:1em;'>
+  <div class="thumbnail" style='padding:10px;'>
+    <% unless vote.image.blank? %>
+      <%= link_to y2012_vote_path(vote) do %><%= image_tag vote.image, style: 'width: 100%;' %><% end %>
+    <% end %>
+    <h4><span style='font-size:1.2em;font-style:italic;'><%= number_with_delimiter vote.seq %></span> <%= link_to vote.title, vote %></h4>
+    <p class='muted'><%= link_to raw("<i class='icon-#{vote.user.omniauth_provider}'></i> #{vote.user.name}"), vote.user %>
+      <i class='icon-comment'></i> <%= link_to number_with_delimiter(vote.comments.count), vote %></p>
+    <% if vote.image.blank? %>
+      <%= simple_format vote.content %>
+    <% end %>
+    <p><%= link_to like_vote_path(vote), method: :post, remote: true, class: 'btn btn-block' do %>
+        <i class='icon-thumbs-up'></i> 좋아요! <%= content_tag :span, "(#{vote.likes})", class: 'likes' %>
+      <% end %></p>
+    <%= link_to '수정', edit_vote_path(vote) if user_signed_in? && current_user == vote.user %>
+  </div>
+</li>

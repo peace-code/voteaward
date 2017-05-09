@@ -9,7 +9,7 @@
     <%= simple_form_for @award do |f| %>
       <%= f.error_notification %>
       <div class="form-inputs">
-        <% promises_array = Promise.all.collect{|p| ["#{p.seq} - #{p.user.name}", p.id] } %>
+        <% promises_array = @promises.collect{ |x| ["#{x.seq} - #{x.user.name}", x.id] } %>
         <%= f.association :promises, as: :check_boxes, label: '수상자', collection: promises_array, item_wrapper_class: 'inline' %>
       </div>
       <div class="form-actions">

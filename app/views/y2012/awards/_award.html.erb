@@ -1,0 +1,19 @@
+<div class='span6 masonry_item <%= 'selected' if award.promises.present? %>'>
+  <div class='infobox'>
+    <h4><i class='icon icon-gift'></i> <%= link_to "#{award.title} 어워드", y2012_award_path(award) %>
+      <small><i class='icon-<%= award.user.omniauth_provider %>'></i> <%= link_to award.user.name, award.user %>
+      <i class='icon-comment'></i> <%= link_to number_with_delimiter(award.comments.count), award %></small></h4>
+    <div class='media'>
+      <a class='pull-left'>
+        <%= image_tag award.user.profile_image, class: 'media-object', style: 'width: 80px;' %>
+      </a>
+      <div class='media-body'>
+        <p><%= award.content %></p>
+        <p>상품 : <%= award.prize %></p>
+        <%= link_to('destroy', y2012_award_path(award), method: :delete, confirm: 'are you sure?') if (user_signed_in? && current_user.admin?) %>
+        <%- btn_label = award.promises.present? ? '당선자 보기' : '자세히 보기' %>
+        <%= link_to btn_label, y2012_award_path(award), class: 'btn' %>
+      </div>
+    </div>
+  </div>
+</div>

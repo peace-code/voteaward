@@ -16,8 +16,14 @@
 /public/uploads/*
 
 # Ignore configs
-mongoid.yml
+/config/mongoid.yml
 /config/credentials/*.yml
+.env
+/config/nginx.conf
 
 # Ignore DS_Store
 .DS_Store
+
+# Ignore assets
+/public/assets
+

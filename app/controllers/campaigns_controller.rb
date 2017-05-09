@@ -8,7 +8,7 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = current_user.campaigns.build(params[:campaign])
+    @campaign = current_user.campaigns.build(campaign_params)
     if @campaign.save
       redirect_to campaigns_path, notice: I18n.t('campaign.created')
     else
@@ -22,7 +22,7 @@ class CampaignsController < ApplicationController
 
   def update
     @campaign = Campaign.find(params[:id])
-    if @campaign.update_attributes(params[:campaign])
+    if @campaign.update_attributes(campaign)
       redirect_to campaigns_path, notice: I18n.t('campaign.updated')
     else
       render action: 'edit'
@@ -31,5 +31,10 @@ class CampaignsController < ApplicationController
 
   def destroy
 
+  end
+
+private
+  def campaign_params
+    params.require(:campaign).permit()
   end
 end

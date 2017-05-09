@@ -6,6 +6,7 @@ class Award
   belongs_to :user
   has_many :comments, as: :commentable
   has_and_belongs_to_many :promises
+  belongs_to :election
 
   #fields
   field :title
@@ -18,5 +19,6 @@ class Award
   validates_presence_of :title, :content, :prize
 
   # scopes
-  default_scope desc(:_id)
+  default_scope -> { order(_id: :desc) }
+
 end

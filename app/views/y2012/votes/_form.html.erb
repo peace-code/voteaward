@@ -1,0 +1,11 @@
+<%= simple_form_for @vote, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :image, label: '이미지' %>
+  <%= f.input :title, label: '제목' %>
+  <%= f.input :content, label: '이야기', as: :text, input_html: { class: 'span5', rows: 5 } %>
+  <%= f.association :event, label: '이벤트에 참가하기', collection: Event.all, as: :radio_buttons %>
+  <div class="form-actions">
+    <%= f.button :submit, '등록', :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                events_path, :class => 'btn' %>
+  </div>
+<% end %>

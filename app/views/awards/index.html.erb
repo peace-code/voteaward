@@ -2,25 +2,24 @@
   <div class='container'>
     <div class='page-header'>
       <h1>투표 어워드
-        <small>총 <%= Award.all.count%>개의 어워드</small>
+        <small>총 <%= @awards.count %>개의 어워드</small>
       </h1>
     </div>
 
-    <% if user_signed_in? && current_user.awards.present? %>
-      <div class='alert alert-info'>
-        <%- award = current_user.awards.first -%>
-        '<%= content_tag :b, award.title %>' 어워드의 당첨자를 정해주세요!
-        <%= link_to edit_award_path(award), class: 'btn btn-info' do %>
-          <i class="icon-gift"></i> 당첨자 지정하기
-        <% end %>
+    <%= render 'encourage_box' %>
+
+    <% if user_signed_in? %>
+      <div class='well'>
+        <p>누구든지 투표를 약속한 사람들에게 어워드를 부여할 수 있습니다.
+          지금 바로 <%= content_tag :b, current_user.name %>님만의 어워드를 만들어 보세요!</p>
+        <%= link_to "#{current_election.title} 투표대잔치 '#{current_user.name} 어워드' 만들기", new_award_path, class: 'btn btn-primary btn-large' %>
       </div>
     <% end %>
 
-    <%= render 'encourage_box' %>
 
     <div class='tabbable'>
       <ul class="nav nav-tabs">
-        <li><a href="#tab1" data-toggle='tab' onclick='show_all()'><i class="icon-user"></i><%= Award.all.count %>개의 투표 어워드</a></li>
+        <li><a href="#tab1" data-toggle='tab' onclick='show_all()'><i class="icon-user"></i><%= @awards.count %>개의 투표 어워드</a></li>
         <li class="active"><a href="#tab3" data-toggle='tab' onclick='show_selected()'><i class='icon-gift'></i>당선되었어요!</a></li>
         <li class='disabled'><a href="#tab2" data-toggle='tab'><i class='icon-wrench'></i>지도로 어워드 보기</a></li>
       </ul>

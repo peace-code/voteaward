@@ -16,7 +16,7 @@ class Campaign
   validates_presence_of :url, :title, :description
 
   # scope
-  default_scope desc(:_id)
+  default_scope -> { order(_id: :desc) }
 
   # callbacks
 end

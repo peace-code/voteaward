@@ -1,19 +1,18 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
-gem 'rails', '3.2.9'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem 'rails', '4.2.8'
 
 # db
-gem 'mongoid'
+gem 'mongoid', '4.0.2'
+gem 'mongoid-observers', '0.2.0'
 gem 'geocoder'
 
 # file upload
-gem 'rmagick'
-gem 'carrierwave'
+gem 'mini_magick'
+gem 'carrierwave', '~> 1.0'
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
-gem "fog"
+gem 'fog-aws', '0.12.0'
 
 # auth
 gem 'devise'
@@ -24,31 +23,38 @@ gem 'omniauth-twitter'
 gem 'koala'
 gem 'twitter'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem "therubyracer"
-  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-  gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'therubyracer', '~>0.12.3'
+gem 'less-rails', '~>2.8.0'
+gem 'twitter-bootstrap-rails', '2.2.8'
 
 gem 'jquery-rails'
 gem 'simple_form'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
 gem 'jbuilder'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'jquery-countdown-rails'
 
-# Deploy with Capistrano
-gem 'capistrano'
+gem 'dotenv-rails'
+gem 'puma'
 
-# To use debugger
-# gem 'debugger'
+group :development, :test do
+  gem 'pry-byebug'
+  gem 'spring'
+  gem 'railroady'
+end
+
+group :development do
+  gem 'web-console', '~> 2.0'
+  gem 'capistrano', '~> 3.8'
+  gem 'capistrano-rbenv',     require: false
+  gem 'capistrano-rails',   require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano3-puma',   require: false
+end
+
+group :production do
+  gem 'rails_12factor'
+end

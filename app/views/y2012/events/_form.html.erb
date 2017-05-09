@@ -1,0 +1,12 @@
+<%= simple_form_for @event, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :title, label: '제목', input_html: { class: 'span5' } %>
+  <%= f.input :content, label: '설명', as: :text, input_html: { class: 'span5', rows: 5 } %>
+  <%= f.input :image, label: '이미지' %>
+  <%= f.input :limit, label: '인원수' %>
+  <%= f.input :address, label: '주소', hint: '함께 개표 방송을 보는 이벤트를 한다면 위치를 알려주세요', input_html: { class: 'span5' } %>
+  <div class="form-actions">
+    <%= f.button :submit, '등록', :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                events_path, :class => 'btn' %>
+  </div>
+<% end %>

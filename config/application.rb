@@ -1,19 +1,16 @@
 require File.expand_path('../boot', __FILE__)
 
-# Pick the frameworks you want:
-# require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
-require "active_resource/railtie"
+# require "active_resource/railtie"
 require "sprockets/railtie"
-# require "rails/test_unit/railtie"
+# require "active_record/railtie"
 
-if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  Bundler.require(*Rails.groups(:assets => %w(development test)))
-  # If you want your assets lazily compiled in production, use this line
-  # Bundler.require(:default, :assets, Rails.env)
-end
+require "i18n/backend/fallbacks"
+
+# Require the gems listed in Gemfile, including any gems
+# you've limited to :test, :development, or :production.
+Bundler.require(*Rails.groups)
 
 module Voteaward
   class Application < Rails::Application
@@ -21,23 +18,20 @@ module Voteaward
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    # Custom directories with classes and modules you want to be autoloadable.
-    # config.autoload_paths += %W(#{config.root}/extras)
-
-    # Only load the plugins named here, in the order given (default is alphabetical).
-    # :all can be used as a placeholder for all plugins not explicitly named.
-    # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    # config.active_record.raise_in_transactional_callbacks = true
 
     # Activate observers that should always be running.
-    # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
     config.mongoid.observers = :promise_observer, :award_observer, :vote_observer
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
+    # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Seoul'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    # config.i18n.default_locale = :de
     config.i18n.default_locale = :ko
 
     # Configure the default encoding used in templates for Ruby 1.9.
@@ -49,22 +43,15 @@ module Voteaward
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
 
-    # Use SQL instead of Active Record's schema dumper when creating the database.
-    # This is necessary if your schema can't be completely dumped by the schema dumper,
-    # like if you have constraints or database-specific column types
-    # config.active_record.schema_format = :sql
-
-    # Enforce whitelist mode for mass assignment.
-    # This will create an empty whitelist of attributes available for mass-assignment for all models
-    # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
-    # parameters by using an attr_accessible or attr_protected declaration.
-    # config.active_record.whitelist_attributes = true
-
     # Enable the asset pipeline
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # config.assets.compile = true
+    # config.less.paths << "#{Rails.root}/lib/less/protractor/stylesheets"
+    # config.less.compress = true
 
     # Prevent scaffold.css, javascripts from being generated
     config.generators do |g|
@@ -73,7 +60,24 @@ module Voteaward
     end
 
     # oauth
-    config.facebook = YAML.load_file("#{Rails.root.to_s}/config/credentials/facebook_credential.yml")[Rails.env]
-    config.twitter = YAML.load_file("#{Rails.root.to_s}/config/credentials/twitter_credential.yml")[Rails.env]
+    if Rails.env.development?
+      config.facebook = {"client_id" => ENV['FACEBOOK_KEY_DEV'], "client_secret" => ENV['FACEBOOK_SECRET_DEV'] }
+      config.twitter = {"client_id" => ENV['TWITTER_KEY_DEV'], "client_secret" => ENV['TWITTER_SECRET_DEV'] }
+    elsif Rails.env.test?
+      config.facebook = {"client_id" => ENV['FACEBOOK_KEY_DEV'], "client_secret" => ENV['FACEBOOK_SECRET_DEV'] }
+      config.twitter = {"client_id" => ENV['TWITTER_KEY_DEV'], "client_secret" => ENV['TWITTER_SECRET_DEV'] }
+    else Rails.env.production?
+      config.facebook = {"client_id" => ENV['FACEBOOK_KEY'], "client_secret" => ENV['FACEBOOK_SECRET'] }
+      config.twitter = {"client_id" => ENV['TWITTER_KEY'], "client_secret" => ENV['TWITTER_SECRET'] }
+    end
+
+    # mongoid
+    config.generators do |g|
+      g.orm :mongoid
+    end
+
+    # Configure fallbacks for mongoid errors:
+    I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
+    config.i18n.fallbacks = {'ko' => 'en'}
   end
 end

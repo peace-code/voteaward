@@ -2,16 +2,35 @@
   <div class='container'>
     <div class='page-header'>
       <h1>투표하겠소
-        <small>총 <%= Promise.all.count %>명이 투표 약속을 하셨습니다.</small>
+        <small>총 <%= @promises.count %>명이 투표 약속을 하셨습니다.</small>
       </h1>
     </div>
 
     <%= render 'encourage_box' %>
 
+    <% if user_signed_in? %>
+      <% if Promise.where(user: current_user, election: current_election).count < 1 %>
+        <div class='well'>
+          간단히 투표 약속을 마칠 수 있습니다. <%= link_to '투표약속하기', new_promise_path, class: 'btn btn-primary' %>
+        </div>
+      <% else %>
+        <div class='alert alert-success'>
+          <%= content_tag :b, current_user.name %>님은
+          <%= current_election.title %>에서
+          <%= content_tag :b, Promise.where(user: current_user, election: current_election).first.seq %>번째로 투표 약속을 하셨고,
+          <%= content_tag :b, Award.where(user: current_user, election: current_election).count %>개의 어워드를 만드셨습니다.
+        </div>
+      <% end %>
+    <% end %>
+
     <div class='tabbable'>
       <ul class="nav nav-tabs">
-        <li><a href="#tab1" data-toggle='tab' onclick='show_all();'><i class="icon-user"></i><%= Promise.all.count %>명의 투표 약속</a></li>
-        <li class="active"><a href="#tab2" data-toggle='tab' onclick='show_selected();'><i class='icon-gift'></i>당선되었어요!</a></li>
+        <li class="active">
+          <a href="#tab1" data-toggle='tab' onclick='show_all();'>
+            <i class="icon-user"></i><%= @promises.count %>명의 투표 약속
+          </a>
+        </li>
+        <li class="active"><a href="#tab2" data-toggle='tab' onclick='show_selected();'><i class='icon-gift'></i>당선되었어요!(작업중)</a></li>
       </ul>
       <div class='tab-content'>
         <div class='row masonry_container'>

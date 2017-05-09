@@ -1,0 +1,7 @@
+<% unless user_signed_in? %>
+  <div class='well'>
+    <h4>투표 대잔치 <%= current_election.promises.count + 1 %>번째의 주인공이 되어 주세요!</h4>
+    <%= link_to raw("<i class='icon-facebook'></i> 페이스북으로 시작하기"), user_facebook_omniauth_authorize_path, class: 'btn btn-primary btn-large' %>
+    <%= link_to raw("<i class='icon-twitter'></i> 트위터로 시작하기"), user_twitter_omniauth_authorize_path, class: 'btn btn-primary btn-large' %>
+  </div>
+<% end %>

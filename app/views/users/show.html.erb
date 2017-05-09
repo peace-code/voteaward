@@ -7,75 +7,83 @@
 <% end %>
 <section id='user'>
   <div class='container'>
-    <div class='page-header'>
-      <h3><i class='icon-user'></i> <%= @user.name %>님의 2012년 투표어워드
-        <small><%= link_to raw("<i class='icon-#{@user.omniauth_provider}'></i> #{@user.omniauth_url}"), @user.omniauth_url %></small>
-      </h3>
-    </div>
-
-    <div class="row">
-      <div class="span4">
-        <% if @user.promise.blank? %>
-          <div class="badges">
-            <center>
-              <%= image_tag 'badge1_off.png' %>
-              <h4>투표약속에 참여해보세요</h4>
-              <p>투표하겠소를 통해 투표약속을 해보세요</p>
-            </center>
+    <% unless @user.promises.present? or @user.votes.present? or @user.awards.present? %>
+      <%= render 'beginner' %>
+    <% else %>
+      <% Election.all.each do |x| %>
+      <% promise = Promise.where(user: @user, election: x).try(:first) %>
+      <% award = Award.where(user: @user, election: x).try(:first) %>
+      <% vote = Vote.where(user: @user, election: x).try(:first) %>
+        <div class='page-header'>
+          <h3><i class='icon-user'></i> <%= @user.name %>님의 <%= x.title %> 투표어워드
+            <small><%= link_to raw("<i class='icon-#{@user.omniauth_provider}'></i> #{@user.omniauth_url}"), @user.omniauth_url %></small>
+          </h3>
+        </div>
+        <div class="row">
+          <div class="span3">
+            <% if promise.nil? %>
+              <div class="badges">
+                <center>
+                  <%= image_tag 'badge1_off.png' %>
+                  <h4>투표약속에 참여해보세요</h4>
+                  <p>투표하겠소를 통해 투표약속을 해보세요</p>
+                </center>
+              </div>
+            <% else %>
+              <div class="badges">
+                <center>
+                  <%= image_tag 'badge1_on.png' %>
+                  <h4><%= promise.seq %>번째의 투표하겠소</h4>
+                  <p>투표 약속을 하셨습니다.</p>
+                  <p class='text-success'>"<%= promise.reason %>"</p>
+                </center>
+              </div>
+            <% end %>
           </div>
-        <% else %>
-          <div class="badges">
-            <center>
-              <%= image_tag 'badge1_on.png' %>
-              <h4><%= @user.promise.seq %>번째의 투표하겠소</h4>
-              <p>투표 약속을 하셨습니다.</p>
-              <p class='text-success'>"<%= @user.promise.reason %>"</p>
-            </center>
+          <div class="span3">
+            <% if award.nil? %>
+              <div class="badges">
+                <center>
+                  <%= image_tag 'badge2_off.png' %>
+                  <h4>투표 어워드를 만들어 보세요</h4>
+                  <p>투표어워드를 만들어 투표독려에 참여해보세요</p>
+                </center>
+              </div>
+            <% else %>
+              <div class="badges">
+                <center>
+                  <%= image_tag 'badge2_on.png' %>
+                  <h4><%= link_to "#{award.title} 투표 어워드", award %></h4>
+                  <p>투표 어워드를 만들어 투표 독려에 힘쓰셨습니다.</p>
+                </center>
+              </div>
+            <% end %>
           </div>
-        <% end %>
-      </div>
-      <div class="span4">
-        <% if @user.awards.empty? %>
-          <div class="badges">
-            <center>
-              <%= image_tag 'badge2_off.png' %>
-              <h4>투표 어워드를 만들어 보세요</h4>
-              <p>투표어워드를 만들어 투표독려에 참여해보세요</p>
-            </center>
+          <div class="span3">
+            <% if vote.nil? %>
+              <div class="badges">
+                <center>
+                  <%= image_tag 'badge3_off.png' %>
+                  <h4>투표했소에 참여해보세요</h4>
+                  <p>투표인증을 하고 이벤트에도 참여해보세요</p>
+                </center>
+              </div>
+            <% else %>
+              <div class="badges">
+                <center>
+                  <%= image_tag 'badge3_on.png' %>
+                  <h4><%= link_to "#{vote.seq}번째의 투표했소", vote %></h4>
+                  <p>투표 인증을 하셨습니다.</p>
+                </center>
+              </div>
+            <% end %>
           </div>
-        <% else %>
-          <div class="badges">
-            <center>
-              <%= image_tag 'badge2_on.png' %>
-              <h4><%= link_to "#{@user.awards.first.title} 투표 어워드", @user.awards.first %></h4>
-              <p>투표 어워드를 만들어 투표 독려에 힘쓰셨습니다.</p>
-            </center>
-          </div>
-        <% end %>
-      </div>
-      <div class="span4">
-        <% if @user.votes.empty? %>
-          <div class="badges">
-            <center>
-              <%= image_tag 'badge3_off.png' %>
-              <h4>투표했소에 참여해보세요</h4>
-              <p>투표인증을 하고 이벤트에도 참여해보세요</p>
-            </center>
-          </div>
-        <% else %>
-          <div class="badges">
-            <center>
-              <%= image_tag 'badge3_on.png' %>
-              <h4><%= link_to "#{@user.votes.first.seq}번째의 투표했소", @user.votes.first %></h4>
-              <p>투표 인증을 하셨습니다.</p>
-            </center>
-          </div>
-        <% end %>
-      </div>
-    </div><!-- row -->
-    <div class='page-header'>
-      <h3><i class='icon-user'></i> <%= @user.name %>님의 2014년 투표어워드</h3>
-    </div>
-    <div style='text-align:center;font-size:1.2em;'>준비 중입니다. 함께 준비하실 분은 <a href='http://www.facebook.com/groups/voteaward/'>페이스북 그룹</a> 혹은 <a href='https://groups.google.com/forum/?fromgroups#!forum/voteaward'>구글 그룹스</a>에서 뵈어요. :)</div>
+        </div><!-- row -->
+      <% end %>
+    <% end %>
   </div>
+  <div class='page-header'>
+    <h3><i class='icon-user'></i> <%= @user.name %>님의 투표어워드</h3>
+  </div>
+  <div style='text-align:center;font-size:1.2em;'>준비 중입니다. 함께 준비하실 분은 <a href='http://www.facebook.com/groups/voteaward/'>페이스북 그룹</a> 혹은 <a href='https://groups.google.com/forum/?fromgroups#!forum/voteaward'>구글 그룹스</a>에서 뵈어요. :)</div>
 </section>

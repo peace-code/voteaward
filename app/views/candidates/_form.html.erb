@@ -1,5 +1,5 @@
 <%= simple_form_for @candidate, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :_type %>
+  <%= f.association :election, label: '선거', collection: Election.all, :as => :radio_buttons %>
   <%= f.input :_id %>
   <%= f.input :name %>
   <%= f.input :party %>

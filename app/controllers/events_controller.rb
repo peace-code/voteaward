@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.build(params[:event])
+    @event = current_user.events.build(event_params)
     if @event.save
       redirect_to events_path, notice: I18n.t('event.created')
     else
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def update
     @event = current_user.events.find(params[:id])
-    if @event.update_attributes(params[:event])
+    if @event.update_attributes(event_params)
       redirect_to events_path, notice: I18n.t('event.updated')
     else
       render action: 'edit'
@@ -34,5 +34,10 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  end
+
+private
+  def event_params
+    params.require(:event).permit(:title, :content, :address, :coordinates, :image, :limit)
   end
 end
