@@ -30,7 +30,8 @@ class Vote
   protected
 
   def assign_id
-    self.seq = Sequence.generate_id(election, :vote)
+    Sequence.generate_id(self.election, :vote)
+    self.seq = Sequence.get_last_id(self.election, :vote)
   end
 
   def set_location

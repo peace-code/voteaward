@@ -7,7 +7,7 @@
 <% end %>
 <section id='user'>
   <div class='container'>
-    <% unless @user.promises.present? %>
+    <% unless @user.promises.present? or @user.votes.present? or @user.awards.present? %>
       <%= render 'beginner' %>
     <% else %>
       <% Election.all.each do |x| %>
