@@ -37,6 +37,6 @@ Rails.application.routes.draw do
     root to: 'pages#home'
   end
 
-  # root to: 'pages#home'
-  root to: 'pages#count'
+  root to: 'pages#home'
+  # root to: 'pages#count'
 end
