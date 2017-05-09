@@ -11,11 +11,11 @@ class AwardsController < ApplicationController
     @award = Award.new(award_params.merge({user: current_user, election: current_election}))
     if @award.save
       message = I18n.t('award.share', username: current_user.name, title: @award.title, content: @award.content, prize: @award.prize)
-      # if current_user.omniauth_provider == :twitter
-      #   current_user.twitter.update([awards_url, message, I18n.t('g.hashtag')].join(' '))
-      # else
-      #   current_user.facebook.put_wall_post(message, {name: I18n.t('g.title'), link: awards_url})
-      # end
+      if current_user.omniauth_provider == :twitter
+        current_user.twitter.update([awards_url, message, I18n.t('g.hashtag')].join(' '))
+      else
+        current_user.facebook.put_wall_post(message, {name: I18n.t('g.title'), link: awards_url})
+      end
       redirect_to awards_url, notice: I18n.t('award.created')
     else
       render action: 'new'
